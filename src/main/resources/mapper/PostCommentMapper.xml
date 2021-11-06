@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.cms.mapper.PostCommentMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.cms.entity.PostComment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="comment_post_ID" jdbcType="BIGINT" property="commentPostId" />
+    <result column="comment_author" jdbcType="VARCHAR" property="commentAuthor" />
+    <result column="comment_author_email" jdbcType="VARCHAR" property="commentAuthorEmail" />
+    <result column="comment_author_url" jdbcType="VARCHAR" property="commentAuthorUrl" />
+    <result column="comment_author_IP" jdbcType="VARCHAR" property="commentAuthorIp" />
+    <result column="comment_date" jdbcType="TIMESTAMP" property="commentDate" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="comment_approved" jdbcType="VARCHAR" property="commentApproved" />
+    <result column="comment_parent_id" jdbcType="BIGINT" property="commentParentId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, comment_post_ID, comment_author, comment_author_email, comment_author_url, comment_author_IP, 
+    comment_date, comment_content, comment_approved, comment_parent_id, user_id, create_time, 
+    update_time
+  </sql>
+</mapper>

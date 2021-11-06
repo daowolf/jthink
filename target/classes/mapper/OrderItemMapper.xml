@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.shop.mapper.OrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.OrderItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_ns" jdbcType="VARCHAR" property="orderNs" />
+    <result column="buyer_id" jdbcType="INTEGER" property="buyerId" />
+    <result column="buyer_nickname" jdbcType="VARCHAR" property="buyerNickname" />
+    <result column="buyer_msg" jdbcType="VARCHAR" property="buyerMsg" />
+    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <result column="dist_user_id" jdbcType="INTEGER" property="distUserId" />
+    <result column="dist_amount" jdbcType="DECIMAL" property="distAmount" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_type" jdbcType="VARCHAR" property="productType" />
+    <result column="product_type_text" jdbcType="VARCHAR" property="productTypeText" />
+    <result column="product_title" jdbcType="VARCHAR" property="productTitle" />
+    <result column="product_summary" jdbcType="VARCHAR" property="productSummary" />
+    <result column="product_sku_id" jdbcType="INTEGER" property="productSkuId" />
+    <result column="product_spec" jdbcType="VARCHAR" property="productSpec" />
+    <result column="product_thumbnail" jdbcType="VARCHAR" property="productThumbnail" />
+    <result column="product_link" jdbcType="VARCHAR" property="productLink" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="product_count" jdbcType="INTEGER" property="productCount" />
+    <result column="with_virtual" jdbcType="BIT" property="withVirtual" />
+    <result column="with_refund" jdbcType="BIT" property="withRefund" />
+    <result column="delivery_cost" jdbcType="DECIMAL" property="deliveryCost" />
+    <result column="delivery_id" jdbcType="INTEGER" property="deliveryId" />
+    <result column="other_cost" jdbcType="DECIMAL" property="otherCost" />
+    <result column="other_cost_remark" jdbcType="VARCHAR" property="otherCostRemark" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+    <result column="view_path" jdbcType="VARCHAR" property="viewPath" />
+    <result column="view_text" jdbcType="VARCHAR" property="viewText" />
+    <result column="view_effective_time" jdbcType="INTEGER" property="viewEffectiveTime" />
+    <result column="comment_path" jdbcType="VARCHAR" property="commentPath" />
+    <result column="invoice_id" jdbcType="INTEGER" property="invoiceId" />
+    <result column="invoice_status" jdbcType="TINYINT" property="invoiceStatus" />
+    <result column="item_status" jdbcType="TINYINT" property="itemStatus" />
+    <result column="refund_no" jdbcType="VARCHAR" property="refundNo" />
+    <result column="refund_amount" jdbcType="DECIMAL" property="refundAmount" />
+    <result column="refund_desc" jdbcType="VARCHAR" property="refundDesc" />
+    <result column="refund_time" jdbcType="TIMESTAMP" property="refundTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jthink.shop.entity.OrderItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="options" jdbcType="LONGVARCHAR" property="options" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, order_id, order_ns, buyer_id, buyer_nickname, buyer_msg, seller_id, dist_user_id, 
+    dist_amount, product_id,product_type, product_type_text, product_title, product_summary, 
+    product_sku_id, product_spec, product_thumbnail, product_link, product_price, product_count, 
+    with_virtual, with_refund, delivery_cost, delivery_id, other_cost, other_cost_remark, 
+    total_amount, pay_amount, view_path, view_text, view_effective_time, comment_path, 
+    invoice_id, invoice_status, item_status, refund_no, refund_amount, refund_desc, refund_time, 
+    modified_time, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    `options`
+  </sql>
+</mapper>

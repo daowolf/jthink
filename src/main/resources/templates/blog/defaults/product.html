@@ -1,0 +1,224 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>笔下光年的博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="yinqi" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/defaults/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/defaults/css/materialdesignicons.min.css" />
+<link rel="stylesheet" type="text/css" href="/defaults/js/highlight/styles/agate.css" />
+<link rel="stylesheet" type="text/css" href="/defaults/css/style.min.css" />
+<style>
+.lyear-arc-detail .image img{
+   max-width:616px;
+}
+</style>
+</head>
+<body>
+<header class="lyear-header text-center" style="background-image:url(/defaults/images/left-bg.jpg);">
+  <div class="lyear-header-container">
+    <div class="lyear-mask"></div>
+    <h1 class="lyear-blogger pt-lg-4 mb-0"><a href="/">[(${site_title})]</a></h1>
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="lyear-hamburger">
+        <div class="hamburger-inner"></div>
+      </div>
+    </a>
+    
+    <div id="navigation" class="collapse navbar-collapse flex-column">
+	  <div class="profile-section pt-3 pt-lg-0">
+	    <img class="profile-image mb-3 rounded-circle mx-auto" src="/defaults/images/lyear.png" width="120" height="120" alt="笔下光年" >
+	    <div class="lyear-sentence mb-3">必须记住我们学习的时间是有限的。时间有限，不只由于人生短促，更由于人事纷繁。我们就应力求把我们所有的时间用去做最有益的事情。</div>
+        <hr>
+	  </div>
+	  <ul class="navbar-nav flex-column text-center">
+	    <jtk:navmenu slug="topnav">
+	     <li class="nav-item" th:each="nav : ${navs}">
+	       <a th:if="${nav.attributes.taxonomy=='page'}" class="nav-link" th:href="'/page/'+${nav.id}" th:text="${nav.title}"></a>
+	       <a th:if="${nav.attributes.taxonomy=='category'}" class="nav-link" th:href="'/category/'+${nav.id}" th:text="${nav.title}"></a>
+	       <a th:if="${nav.attributes.taxonomy=='link_category'}" class="nav-link" th:href="${nav.attributes.postContent}" th:text="${nav.title}"></a>
+	       <a th:if="${nav.attributes.taxonomy=='product_category'}" class="nav-link" th:href="'/category/'+${nav.id}" th:text="${nav.title}"></a>
+	    </li>
+	    </jtk:navmenu>
+	  </ul>
+	  <div class="my-2 my-md-3">
+        <form class="lyear-search-form form-inline justify-content-center pt-3">
+          <input type="text" id="semail" name="semail1" class="form-control mr-md-1" placeholder="搜索关键词" />
+        </form>
+	  </div>
+	</div>
+  </nav>
+  </div>
+</header>
+<div class="lyear-wrapper">
+  <section class="mt-5 pb-5">
+    <div class="container">
+
+      <div class="row">
+        <!-- 文章阅读 -->
+        <div class="col-xl-8">
+          <article class="lyear-arc">
+            <div class="arc-header">
+              <h2 class="arc-title"><a href="#" th:text="${post.postTitle}">标题</a></h2>
+              <ul class="arc-meta">
+                <li><i class="mdi mdi-calendar"></i> [(${#dates.format(post.createTime,'yyyy-MM-dd HH:mm')})]</li>
+                <li><i class="mdi mdi-tag-text-outline"></i> [(${post.seoKeywords})]</li>
+                <li><i class="mdi mdi-comment-multiple-outline"></i> <a href="#">3 评论</a></li>
+              </ul>
+            </div>
+            
+            <div class="arc-preview" th:if="${not #strings.isEmpty(post.imgPreview)}">
+              <a href="#"><img th:src="${post.imgPreview}" alt="" class="img-fluid rounded"></a>
+            </div>
+
+            <div class="lyear-arc-detail">
+               <th:block th:utext="${post.postContent}">
+               </th:block>
+              <div class="mt-5">
+                <h6>Tags:</h6>
+                <div class="tag-cloud">
+                  <jtk:postTag postId="${post.id}">
+                  <a th:href="'/tagpost/'+${tag.id}" class="badge badge-light" th:each="tag:${tags}" th:text="${tag.name}">tag</a>
+                  </jtk:postTag>
+                </div>
+              </div>
+
+              <div class="mt-5 lyear-comment-title">
+                <h5><span>评论 (5)</span></h5>
+              </div>
+
+              <ul class="media-list list-unstyled lyear-comment">
+                <jtk:commentList postId="${post.id}">
+                <li th:id="@{${'comment-'+cmt.id}}" th:each="cmt:${pageInfo.list}">
+				  <div class="media">
+                    <img class="d-flex mr-3 rounded-circle" src="/defaults/images/author.jpg" alt="花满楼">
+                    <div class="media-body">
+                      <a href="#!" class="text-custom reply-btn" data-id="1"><i class="mdi mdi-reply"></i>&nbsp; 回复</a>
+                      <h4 class="media-heading"><a href="#!" th:if="${cmt.commentApproved} eq 'auditing'" th:text="${cmt.commentAuthor +'(审核中)'}">auth</a><a href="#!" th:unless="${cmt.commentApproved} eq 'auditing'" th:text="${cmt.commentAuthor}">auth</a></h4>
+                      <p class="text-muted post-date"  th:text="${#dates.format(cmt.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-09-25 16:17</p>
+                      <p th:text="${cmt.commentContent}">内容</p>
+                    </div>
+				  </div>
+                </li>                
+                </jtk:commentList>
+              </ul>
+              
+              <div id="respond" class="comment-respond">
+                <div class="mt-2">
+                  <h5><span>说点什么吧...</span> <small class="cancel-comment-reply" onclick="cancelReply()">(取消回复)</small></h5>
+                </div>
+                <form action="/sendComment" method="post" class="mt-4 lyear-comment-form" id="commentForm">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <textarea id="commentContent" class="form-control" rows="5" placeholder="登录后发表想说的内容" name="commentContent" required="true"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <button name="submit" type="button" id="sendComment" class="btn btn-primary">发表评论</button>
+                      <input type='hidden' name='commentPostId' th:value='${post.id}' id='commentPostId' />
+                      <input type='hidden' name='commentParentId' id='commentParentId' />
+                    </div>
+                  </div>
+                </div>
+              </form>
+              </div>
+
+            </div>
+
+          </article>
+        </div>
+        <!-- 内容 end -->
+
+        <!-- 侧边栏 -->
+        <div class="col-xl-4">
+          <div class="lyear-sidebar">
+            <!-- 热门文章 -->
+            <aside class="widget widget-hot-posts">
+              <div class="widget-title">热门文章</div>
+              <ul>
+               <jtk:hotPostList pageSize="5">
+                <li th:each="post : ${pageInfo.list}">
+                  <a th:href="'/post/'+${post.id}" th:text="${post.postTitle}">title</a> <span>[(${#dates.format(post.createTime,'yyyy-MM-dd HH:mm')})]</span>
+                </li>
+                </jtk:hotPostList>
+              </ul>
+            </aside>
+
+            <!-- 归档 -->
+            <aside class="widget">
+              <div class="widget-title">归档</div>
+              <ul>
+                <li><a href="#">2019 三月</a> (40)</li>
+                <li><a href="#">2019 四月</a> (08)</li>
+                <li><a href="#">2019 五月</a> (11)</li>
+                <li><a href="#">2019 六月</a> (21)</li>
+              </ul>
+            </aside>
+
+            <!-- 标签 -->
+            <aside class="widget widget-tag-cloud">
+              <div class="widget-title">标签</div>
+              <div class="tag-cloud">
+                 <jtk:hotTag counts="8">
+                 <a th:href="'/tagpost/'+${tag.id}" class="badge badge-light" th:each="tag:${tags}" th:text="${tag.name}">php</a>
+                 </jtk:hotTag>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <!-- 侧边栏 end -->
+      </div>
+
+    </div>
+    <!-- end container -->
+  </section>   
+</div>
+    <footer class="lyear-footer">
+      <div class="inner-footer">
+        <p >
+          友情链接：
+          <jtk:links slug="friendlink">
+             <th:block th:each="link:${links}"><a th:href="${link.linkUrl}"   th:target="${link.linkTarget}" th:text="${link.linkName}">name</a>&nbsp;&nbsp;</th:block>
+          </jtk:links>
+        </p>
+        <p>[(${site_copyright})]&nbsp;&nbsp;All rights reserved. <a href="#">关于本站</a>&nbsp;&nbsp;<a href="#">网站声明</a></p>
+      </div>
+    </footer> 
+<script type="text/javascript" src="/defaults/js/jquery.min.js"></script>
+<script type="text/javascript" src="/defaults/js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="/defaults/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/defaults/js/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="/defaults/js/main.min.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  var $commentForm = $("#commentForm");
+  $("#sendComment").click(function(){
+	  $.ajax({
+		  type:'post',
+		  datatype:'text',
+		  url:"/sendComment",
+		  data:$commentForm.serialize(),
+		  contentType:"application/x-www-form-urlencoded",
+		  success:function(r){
+			  console.log(r);
+		      if (r.code === 200) {
+		          window.location.reload();
+		      } else alert(r.msg);
+		  }
+	  })
+  })
+
+</script>
+</body>
+</html>

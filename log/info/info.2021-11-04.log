@@ -1,0 +1,55 @@
+19:53:04.348 sms [main] INFO  com.jthink.JthinkApplication - Starting JthinkApplication using Java 1.8.0_191 on 192.168.0.21 with PID 684 (/Users/kervin/IdeaProjects/jthink/target/classes started by kervin in /Users/kervin/IdeaProjects/jthink)
+19:53:04.352 sms [main] INFO  com.jthink.JthinkApplication - The following profiles are active: dev
+19:53:06.732 sms [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+19:53:06.733 sms [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2295 ms
+19:53:10.067 sms [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+19:53:10.210 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Starting...
+19:53:41.420 sms [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+21:44:25.912 sms [main] INFO  com.jthink.JthinkApplication - Starting JthinkApplication using Java 1.8.0_191 on 192.168.0.21 with PID 1017 (/Users/kervin/IdeaProjects/jthink/target/classes started by kervin in /Users/kervin/IdeaProjects/jthink)
+21:44:25.915 sms [main] INFO  com.jthink.JthinkApplication - The following profiles are active: dev
+21:44:27.782 sms [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+21:44:27.782 sms [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1796 ms
+21:44:30.910 sms [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+21:44:31.037 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Starting...
+21:45:46.791 sms [main] INFO  com.jthink.JthinkApplication - Starting JthinkApplication using Java 1.8.0_191 on 192.168.0.21 with PID 1024 (/Users/kervin/IdeaProjects/jthink/target/classes started by kervin in /Users/kervin/IdeaProjects/jthink)
+21:45:46.794 sms [main] INFO  com.jthink.JthinkApplication - The following profiles are active: dev
+21:45:48.710 sms [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+21:45:48.710 sms [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1846 ms
+21:45:51.891 sms [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+21:45:52.016 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Starting...
+21:45:52.474 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Start completed.
+21:45:52.606 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Shutdown initiated...
+21:45:52.753 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Shutdown completed.
+21:45:52.765 sms [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+21:46:47.181 sms [main] INFO  com.jthink.JthinkApplication - Starting JthinkApplication using Java 1.8.0_191 on 192.168.0.21 with PID 1029 (/Users/kervin/IdeaProjects/jthink/target/classes started by kervin in /Users/kervin/IdeaProjects/jthink)
+21:46:47.184 sms [main] INFO  com.jthink.JthinkApplication - The following profiles are active: dev
+21:46:49.143 sms [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+21:46:49.143 sms [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1883 ms
+21:46:52.293 sms [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+21:46:52.426 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Starting...
+21:46:52.775 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Start completed.
+21:46:52.876 sms [main] INFO  t.m.m.a.MapperCacheDisabler - Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+21:46:52.877 sms [main] INFO  t.m.m.a.MapperCacheDisabler - Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+21:46:52.877 sms [main] INFO  t.m.m.a.MapperCacheDisabler - Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+21:46:52.878 sms [main] INFO  t.m.m.a.MapperCacheDisabler - Clear EntityHelper entityTableMap cache.
+21:46:53.176 sms [main] INFO  io.undertow - starting server: Undertow - 2.2.8.Final
+21:46:53.185 sms [main] INFO  org.xnio - XNIO version 3.8.0.Final
+21:46:53.195 sms [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.8.0.Final
+21:46:53.263 sms [main] INFO  org.jboss.threads - JBoss Threads version 3.1.0.Final
+21:46:53.357 sms [main] INFO  o.s.b.w.e.undertow.UndertowWebServer - Undertow started on port(s) 8081 (http)
+21:46:56.144 sms [main] INFO  com.jthink.listener.StartListener - 程序启动
+21:46:56.172 sms [main] INFO  com.jthink.JthinkApplication - Started JthinkApplication in 9.637 seconds (JVM running for 10.41)
+21:46:56.180 sms [main] INFO  com.jthink.JthinkApplication - 《《《《《《 jthink started up successfully at 2021-11-04 21:46:56.180 》》》》》》
+21:47:42.686 sms [XNIO-1 task-1] INFO  io.undertow.servlet - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:47:42.686 sms [XNIO-1 task-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:47:42.689 sms [XNIO-1 task-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+21:49:10.058 sms [XNIO-1 task-6] INFO  c.j.s.c.AdminLoginController - admin登录成功
+21:51:29.906 sms [SpringApplicationShutdownHook] INFO  com.jthink.listener.CloseListener - 程序停止
+21:51:29.910 sms [SpringApplicationShutdownHook] INFO  io.undertow - stopping server: Undertow - 2.2.8.Final
+21:51:29.913 sms [SpringApplicationShutdownHook] INFO  io.undertow.servlet - Destroying Spring FrameworkServlet 'dispatcherServlet'
+21:51:29.925 sms [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Shutdown initiated...
+21:51:29.931 sms [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Shutdown completed.

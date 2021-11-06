@@ -1,0 +1,180 @@
+<style>
+.lyear-dropdown-tree {
+    position: relative;
+    flex:1 1 0%;
+}
+.lyear-dropdown-tree .checkbox-box,
+.lyear-dropdown-tree .radio-box {
+    font-size: 15px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree .arrow {
+    margin-left: -15px;
+}
+.lyear-dropdown-tree .checkbox-box:before {
+    content: "\F131";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-checked:before {
+    content: "\F135";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F6F1";
+}
+.lyear-dropdown-tree .radio-box:before {
+    content: "\F130";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-checked:before {
+    content: "\F134";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F377";
+}
+.lyear-dropdown-tree .dropdown-menu {
+    min-width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-bottom: 13px;
+}
+.lyear-dropdown-tree .dropdown-menu > li {
+    margin-left:  15px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul {
+    list-style: none;
+    padding-left: 25px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul a {
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    padding: 3px 20px;
+}
+.lyear-dropdown-tree .dropdown-menu li a {
+    display: inline-block;
+    padding-left: 15px!important;
+    width: auto;
+}
+.lyear-dropdown-tree .dropdown-menu li a.lyear-dropdown-tree-a-checked {
+    color: #33cabb;
+}
+.lyear-dropdown-tree .dropdown-menu a:hover,
+.lyear-dropdown-tree .dropdown-menu a:active,
+.lyear-dropdown-tree .dropdown-menu a:focus {
+    background-color: transparent;
+}
+.lyear-dropdown-tree .form-control {
+    padding-right: 30px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree i.lyear-cert {
+    font-size: 20px;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+/*bootstrap-select插件用到的，也可以不用*/
+.bootstrap-select.open .dropdown-toggle {
+    border-color: #33cabb!important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+}
+.bootstrap-select.open .dropdown-menu.open {
+    border: 1px solid #ebebeb;
+}
+/*示例二、三、四、五*/
+.p-t-5 {
+    padding-top: 5px;
+}
+/*示例五*/
+.input-group-controls {
+    height: 36px;
+    flex: 1 1 0%;
+    border: 1px solid #F2F3F3;
+    padding-left: 15px;
+}
+</style> 
+<link href="/css/materialdesignicons.min.css" rel="stylesheet">
+<!-- fontIconPicker core CSS -->
+<link rel="stylesheet" type="text/css" href="/js/fontIconPicker3.1/css/base/jquery.fonticonpicker.min.css" />
+<!-- required default theme -->
+<link rel="stylesheet" type="text/css" href="js/fontIconPicker3.1/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css"/>              
+                <div class="modal fade" id="addTermModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalGridTitle">新增分类</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+		                <form id="termAddForm" class="row">
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text" id="permNameLabel">分类名称</span></div>
+				                     <input type="text" name="name" class="form-control">
+                                     <input type="hidden" name="oldName"  class="form-control">
+                                     <input type="hidden" name="id"  class="form-control">
+				              </div>
+				            </div>		
+				            <div class="form-group col-12 menu-icon-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标</span></div>
+                                <input id="menu-icon"  type="text" name="icon" class="form-control">
+                                <span id="show-mdi"></span>
+				              </div>
+				            </div>	
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">分类简称</span></div>
+                                <input id="term-slug"  type="text" name="slug" class="form-control">
+				              </div>
+				            </div>	
+					            <div class="form-group col-md-12 file-group">
+					              <div class="input-group">
+					              <div class="input-group-prepend"><span class="input-group-text">预览图片</span></div>
+					                <input type="text" class="form-control file-value" name="linkImage" value="" placeholder="预览图片地址" />
+					                <input type="file" accaccept=".png,.jpg,.jpeg,.bmp,.gif" class="d-none" />
+					                <div class="input-group-append">
+					                  <button class="btn btn-default file-browser" type="button">上传图片</button>
+					                </div>
+					              </div>
+					            </div>					            
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">模&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;板</span></div>
+                                <input id="template"  type="text" name="template" class="form-control">
+				              </div>
+				            </div>					            
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述</span></div>
+                                <input id="term-description"  type="text" name="description" class="form-control">
+				              </div>
+				            </div>					            
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序</span></div>
+                                <input id="termOrder"  type="text" name="termOrder" class="form-control">
+				              </div>
+				            </div>					            			            
+				          <div class="form-group col-12">
+				           <div class="input-group">
+					           <div class="input-group-prepend"><span class="input-group-text">父级分类</span></div>
+					            <div class="lyear-dropdown-tree" id="lyear-dropdown-tree">
+					              <input type="text" class="form-control" id="parentSelect" name="parentSelect" placeholder="请选择父分类" data-toggle="dropdown">
+					              <input type="hidden" name="parentId" id="parentId"/>
+					            </div>
+				            </div>
+				          </div>		                  		                  		                  
+		                </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                        <button type="button" class="btn btn-primary"  name="save" id="termAddBtn">保存</button>
+                        <button class="btn-hide"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>

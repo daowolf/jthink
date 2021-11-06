@@ -1,0 +1,47 @@
+<style>
+/*bootstrap-select插件用到的，也可以不用*/
+.bootstrap-select.open .dropdown-toggle {
+    border-color: #33cabb!important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+}
+.bootstrap-select.open .dropdown-menu.open {
+    border: 1px solid #ebebeb;
+}
+/*示例二、三、四、五*/
+.p-t-5 {
+    padding-top: 5px;
+}
+</style> 
+<link href="/css/materialdesignicons.min.css" rel="stylesheet">
+                <div class="modal fade" id="addSpuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalGridTitle">新增规格</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+		                <form id="spuAddForm" class="row no-gutters">
+		                	<div class="form-group col-md-12">
+				                     <label for="spu">规格名称</label>
+				                     <input type="text" name="spu" class="form-control">
+                                     <input type="hidden" name="oldName"  class="form-control">
+                                     <input type="hidden" name="id"  class="form-control">
+				            </div>	
+				            <div class="form-group col-md-12">
+				                <label for="value">规格&nbsp;&nbsp;值</label>
+                                <input class="form-control js-tags-input" type="text" id="spu-value" name="value" data-height="36px" placeholder="请输入规格"/>
+				            </div>					            				                            		                  		                  		                  
+		                </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                        <button type="button" class="btn btn-primary"  name="save" id="spuAddBtn">保存</button>
+                        <button class="btn-hide"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>

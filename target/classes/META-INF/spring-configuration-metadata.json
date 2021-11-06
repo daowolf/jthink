@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "jthink.security",
+      "type": "com.jthink.security.constants.JthinkSecurity",
+      "sourceType": "com.jthink.security.constants.JthinkSecurity"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jthink.security.code",
+      "type": "com.jthink.security.properties.ValidateCodeProperties",
+      "sourceType": "com.jthink.security.constants.JthinkSecurity"
+    }
+  ],
+  "hints": []
+}

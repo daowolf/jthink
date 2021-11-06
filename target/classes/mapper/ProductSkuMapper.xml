@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.shop.mapper.ProductSkuMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.ProductSku">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="spuval_ids" jdbcType="VARCHAR" property="spuIds" />
+    <result column="spuval_str" jdbcType="VARCHAR" property="spu" />
+    <result column="origin_price" jdbcType="DECIMAL" property="originPrice" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, product_id, spuval_ids, spuval_str, origin_price, price, stock, img_url, 
+    create_time, update_time
+  </sql>
+  <update id="updateStock">
+  
+  update jk_product_sku set stock=#{stock} where id=#{skuId}</update>
+</mapper>

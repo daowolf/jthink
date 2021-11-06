@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.shop.mapper.ProductSpuMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.ProductSpu">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="spu" jdbcType="VARCHAR" property="spu" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, spu, `value`, pic_url,  create_time, update_time
+  </sql>
+  <select id="getProductSpu" resultMap="BaseResultMap">
+  select spu.* from jk_spu_relation spure left join jk_spu spu on spure.spu_id = spu.id where spure.product_id=#{productId}
+  </select>
+</mapper>

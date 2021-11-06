@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.common.mapper.JoptionMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.common.entity.Joption">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="blog_id" jdbcType="INTEGER" property="blogId" />
+    <result column="option_name" jdbcType="VARCHAR" property="optionName" />
+    <result column="option_value" jdbcType="VARCHAR" property="optionValue" />
+    <result column="autoload" jdbcType="VARCHAR" property="autoload" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, blog_id, option_name, option_value, autoload, create_time, update_time
+  </sql>
+</mapper>

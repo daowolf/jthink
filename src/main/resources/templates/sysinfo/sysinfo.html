@@ -1,0 +1,177 @@
+<div class="container-fluid p-t-15">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-bordered">
+              <header class="card-header">
+                <div class="card-title">CPU信息</div>
+              </header>
+              <div class="card-body">
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>属性</th>
+                      <th>值</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>核心数</td>
+                      <td>[(${sysInfo.cpu.cpuNum})]</td>
+                    </tr>
+                    <tr>
+                      <td>用户使用率</td>
+                      <td>[(${sysInfo.cpu.used})]%</td>
+                    </tr>
+                    <tr>
+                      <td>系统使用率</td>
+                      <td>[(${sysInfo.cpu.sys})]%</td>
+                    </tr>
+                    <tr>
+                      <td>当前空闲率</td>
+                      <td>[(${sysInfo.cpu.free})]%</td>
+                    </tr>                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-md-6">
+            <div class="card card-shadowed">
+              <header class="card-header">
+                <div class="card-title">内存信息</div>
+              </header>
+              <div class="card-body">
+ <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>属性</th>
+                      <th>内存</th>
+                      <th>JVM</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>总内存</td>
+                      <td>[(${sysInfo.mem.total})]GB</td>
+                      <td>[(${sysInfo.jvm.total})]MB</td>
+                    </tr>
+                    <tr>
+                      <td>已用内存</td>
+                      <td>[(${sysInfo.mem.used})]GB</td>
+                      <td>[(${sysInfo.jvm.used})]MB</td>
+                    </tr>
+                    <tr>
+                      <td>剩余内存</td>
+                      <td>[(${sysInfo.mem.free})]GB</td>
+                      <td>[(${sysInfo.jvm.free})]MB</td>
+                    </tr>
+                    <tr>
+                      <td>使用率</td>
+                      <td>[(${sysInfo.mem.usage})]%</td>
+                      <td>[(${sysInfo.jvm.usage})]%</td>
+                    </tr>                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-bordered">
+              <header class="card-header">
+                <div class="card-title">JAVA虚拟机信息</div>
+              </header>
+              <div class="card-body">
+               <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>JVM名称</td>
+                      <td>[(${sysInfo.jvm.name})]</td>
+                      <td>JAVA版本</td>
+                      <td>[(${sysInfo.jvm.version})]</td>
+                    </tr>
+                    <tr>
+                      <td>启动时间</td>
+                      <td>[(${sysInfo.jvm.startTime})]</td>
+                      <td>运行时长</td>
+                      <td>[(${sysInfo.jvm.runTime})]</td>
+                    </tr>
+                    <tr>
+                      <td >安装路径</td>
+                      <td colspan="3">[(${sysInfo.jvm.home})]</td>
+                    </tr>
+                    <tr>
+                      <td>项目路径</td>
+                      <td colspan="3">[(${sysInfo.sys.userDir})]</td>
+                    </tr>                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>   
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-bordered">
+              <header class="card-header">
+                <div class="card-title">服务器信息</div>
+              </header>
+              <div class="card-body">
+               <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>服务器名称</td>
+                      <td>[(${sysInfo.sys.computerName})]</td>
+                      <td>操作系统</td>
+                      <td>[(${sysInfo.sys.osName})]</td>
+                    </tr>
+                    <tr>
+                      <td>服务器IP</td>
+                      <td>[(${sysInfo.sys.computerIp})]</td>
+                      <td>系统架构</td>
+                      <td>[(${sysInfo.sys.osArch})]</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>   
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-bordered">
+              <header class="card-header">
+                <div class="card-title">磁盘信息</div>
+              </header>
+              <div class="card-body">
+               <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>盘符路径</th>
+                      <th>文件系统</th>
+                      <th>盘符类型</th>
+                      <th>总大小</th>
+                      <th>可用大小</th>
+                      <th>已用大小</th>
+                      <th>已用百分比</th>
+                    </tr>
+                  </thead>              
+                  <tbody>
+                    <tr th:each="sysFile:${sysInfo.sysFiles}">
+                      <td>[(${sysFile.dirName})]</td>
+                      <td>[(${sysFile.typeName})]</td>
+                      <td>[(${sysFile.sysTypeName})]</td>
+                      <td>[(${sysFile.total})]</td>
+                      <td>[(${sysFile.free})]</td>
+                      <td>[(${sysFile.used})]</td>
+                      <td>[(${sysFile.usage})]%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>                    
+</div>

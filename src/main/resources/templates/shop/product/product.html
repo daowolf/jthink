@@ -1,0 +1,41 @@
+<div data-th-insert="shop/product/productAdd"></div>   
+<div class="container-fluid p-t-15">
+  <div class="row">
+    <div class="col-md-3">
+       <div id="productCat-tree"></div> 
+    </div>
+    <div class="col-md-9">
+      <div class="card">
+      <header class="card-header"><div class="card-title">商品管理</div></header>
+        <div class="card-body">
+          <div id="toolbar" class="toolbar-btn-action">
+            <button id="btn_add" type="button" class="btn btn-primary m-r-5" data-toggle="modal" data-target="#addProductModal">
+              <span class="mdi mdi-plus" aria-hidden="true"></span>新增
+            </button>
+            <button id="btn_delete" type="button" class="btn btn-danger" onclick="deleteProducts()">
+              <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
+            </button>
+          </div>
+           <div class="table-responsive">  
+             <table class="table text-nowrap" id="productsTable"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet"  type="text/css" href="/js/bootstrap-table/bootstrap-table.min.css">
+<link rel="stylesheet"  type="text/css" href="/js/jstree/themes/default/style.min.css" >
+<script type="text/javascript" src="/js/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!--标签插件-->
+<script src="/js/jquery-tagsinput/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="/js/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.lyear.dropdowntree.min.js"></script>
+<!-- fontIconPicker JS -->
+<script type="text/javascript" src="/js/fontIconPicker3.1/js/jquery.fonticonpicker.min.js"></script>  
+<script type="text/javascript" src="/js/jstree/jstree.min.js"></script>
+<script type="text/javascript" src="/js/app/shop/product/product.js"></script>
+<script type="text/javascript" src="/js/app/shop/product/productAdd.js"></script>
+<script type="text/javascript" src="/js/app/shop/product/productEdit.js"></script>
+<script type="text/javascript" src="/js/app/shop/product/uploadImg.js"></script>

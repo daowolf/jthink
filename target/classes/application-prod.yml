@@ -1,0 +1,111 @@
+server:
+  port: 8081
+  undertow:
+    io-threads: 16  
+    worker-threads: 256  
+    buffer-size: 1024  
+    direct-buffers: true 
+  servlet:
+    # 项目的访问路径
+    context-path: /
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 20MB
+  web:
+    resources:
+      # 配置静态资源路径（默认是/static 、/public 、 /resources 和/META-INF/resources） 开启自定义配置后，默认不生效
+      static-locations: ["classpath:/static","classpath:/uploads","classpath:/templates/blog","file:${jthink.upload-file-path}"]
+  datasource:
+    url: jdbc:p6spy:mysql://127.0.0.1:3306/jthink?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-test-query: select 1
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      pool-name: FebsHikariCP
+  thymeleaf:
+  # 生产环境设置为true
+    cache: false
+  aop:
+    proxy-target-class: true
+
+  # 时间类型格式化，时区为 +8区
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # sa-token配置
+  sa-token: 
+    # token名称 (同时也是cookie名称)
+    token-name: satoken
+    # token有效期，单位s 默认30天, -1代表永不过期 
+    timeout: 2592000
+    # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+    activity-timeout: -1
+    # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录) 
+    allow-concurrent-login: false
+    # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token) 
+    is-share: false
+    # token风格
+    token-style: uuid  
+# 数据库密码加密 密钥
+jasypt:
+  encryptor:
+    password: febs
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  configuration:
+    jdbc-type-for-null: null
+  type-aliases-package: com.jthink.**.entity
+# 通用 mapper插件配置
+mapper:
+  mappers: com.jthink.common.config.TkMapper
+  not-empty: false
+  identity: mysql
+
+# pagehelper插件配置（分页）
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+jthink:
+  upload-file-path: /Users/jthink/uploads/
+  jwt:
+    # token的有效期，以毫秒为单位（15分钟）
+    token_expire: 900000
+  # 是否在控制台打印 sql语句
+  showsql: true
+  # AOP记录用户操作日志，true开启，false关闭
+  open-aop-log: true
+  security:
+    # 记住我有效时间，单位为秒
+    remember-me-timeout: 3600
+    # 验证码相关配置
+    code:
+      # 图形验证码相关配置
+      image:
+        # 图形验证码由字符位数
+        length: 4
+        # 图形验证码图片长度，单位 px
+        width: 148
+        # 图形验证码高度，单位 px
+        height: 36
+        # 图形验证码失效时间
+        expire-in: 60
+       # 以下资源需要验证图形验证码
+        url: /test/img/code,/webapi/login
+        # 生成图形验证码的请求 url
+        create-url: /image/code
+        # 对应图形验证码登录页面 form表单的 action属性
+        login-processing-url: /system/form/login

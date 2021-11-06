@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="keywords" content="LightYear,LightYearAdmin,Jthink,后台模板,后台管理系统,JthinkHTML模板">
+<meta name="description" content="Light Year Admin V4是一个基于Bootstrap v4.4.1的后台管理系统的HTML模板。">
+<meta name="author" content="yinq">
+<title>首页 - Jthink后台管理系统</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" type="text/css" data-th-href="@{/css/materialdesignicons.min.css}">
+<link rel="stylesheet" type="text/css" data-th-href="@{/css/fontawesome-free-5.11.2-web/css/all.min.css}">
+<link rel="stylesheet" type="text/css" data-th-href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" data-th-href="@{/css/animate.min.css}">
+<link rel="stylesheet" type="text/css" data-th-href="@{/js/jquery-confirm/jquery-confirm.min.css}">
+<link rel="stylesheet" type="text/css" data-th-href="@{/css/style.min.css}">
+<style>
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+</style>
+</head>
+
+<body>
+<div class="lyear-layout-web">
+  <div class="lyear-layout-container">
+    <!--左侧导航-->
+    <aside class="lyear-layout-sidebar">
+      
+      <!-- logo -->
+      <div id="logo" class="sidebar-header">
+        <a href="/system">Jthink后台管理系统</a>
+      </div>
+      <div class="lyear-layout-sidebar-info lyear-scroll"> 
+        
+        <nav class="sidebar-main" id="sidebar-main">
+        <!-- 左侧导航js初始化 -->
+        </nav>
+        
+        <div class="sidebar-footer">
+          <p class="copyright">Copyright &copy; 2021. <a target="_blank" href="http://www.jthink.cc">Jthink</a> All rights reserved.</p>
+        </div>
+      </div>
+      
+    </aside>
+    <!--End 左侧导航-->
+    
+    <!--头部信息-->
+    <header class="lyear-layout-header">
+      
+      <nav class="navbar">
+      
+        <div class="navbar-left">
+          <div class="lyear-aside-toggler">
+            <span class="lyear-toggler-bar"></span>
+            <span class="lyear-toggler-bar"></span>
+            <span class="lyear-toggler-bar"></span>
+          </div>
+        </div>
+        
+        <ul class="navbar-right d-flex align-items-center">
+          <li class="dropdown">
+            <a href="/" class="icon-item" target="_blank" title="前台" style="padding-top:0px;color:#4d5259;"><i class="mdi mdi-home" style="font-size:1.5em"></i></a>
+          </li>
+          <li class="dropdown dropdown-notice">
+            <span data-toggle="dropdown" class="icon-item">
+              <i class="mdi mdi-bell-outline"></i>
+              <span class="badge badge-danger">10</span>
+            </span>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="lyear-notifications">
+                
+                <div class="lyear-notifications-title clearfix"  data-stopPropagation="true"><a href="#!" class="float-right">查看全部</a>你有 10 条未读消息</div>
+                <div class="lyear-notifications-info lyear-scroll">
+                  <a href="#!" class="dropdown-item" title="树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它">树莓派销量猛增，疫情期间居家工作学习、医疗领域都需要它</a>
+                  <a href="#!" class="dropdown-item" title="GNOME 用户体验团队将为 GNOME Shell 提供更多改进">GNOME 用户体验团队将为 GNOME Shell 提供更多改进</a>
+                  <a href="#!" class="dropdown-item" title="Linux On iPhone 即将面世，支持 iOS 的双启动">Linux On iPhone 即将面世，支持 iOS 的双启动</a>
+                  <a href="#!" class="dropdown-item" title="GitHub 私有仓库完全免费面向团队提供">GitHub 私有仓库完全免费面向团队提供</a>
+                  <a href="#!" class="dropdown-item" title="Wasmtime 为 WebAssembly 增加 Go 语言绑定">Wasmtime 为 WebAssembly 增加 Go 语言绑定</a>
+                  <a href="#!" class="dropdown-item" title="红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁">红帽借“订阅”成开源一哥，首创者 Cormier 升任总裁</a>
+                  <a href="#!" class="dropdown-item" title="Zend 宣布推出两项 PHP 新产品">Zend 宣布推出两项 PHP 新产品</a>
+                </div>
+                
+              </div>
+            </div>
+          </li>
+          <!--切换主题配色-->
+		  <li class="dropdown dropdown-skin">
+		    <span data-toggle="dropdown" class="icon-item"><i class="mdi mdi-palette"></i></span>
+			<ul class="dropdown-menu dropdown-menu-right" data-stopPropagation="true">
+              <li class="drop-title"><p>主题</p></li>
+              <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="site_theme" value="default" id="site_theme_1" checked>
+                  <label for="site_theme_1"></label>
+                </span>
+                <span>
+                  <input type="radio" name="site_theme" value="dark" id="site_theme_2">
+                  <label for="site_theme_2"></label>
+                </span>
+                <span>
+                  <input type="radio" name="site_theme" value="translucent" id="site_theme_3">
+                  <label for="site_theme_3"></label>
+                </span>
+              </li>
+			  <li class="drop-title"><p>LOGO</p></li>
+			  <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="logo_bg" value="default" id="logo_bg_1" checked>
+                  <label for="logo_bg_1"></label>
+                </span>
+                <span>
+                  <input type="radio" name="logo_bg" value="color_2" id="logo_bg_2">
+                  <label for="logo_bg_2"></label>
+                </span>
+                <span>
+                  <input type="radio" name="logo_bg" value="color_3" id="logo_bg_3">
+                  <label for="logo_bg_3"></label>
+                </span>
+                <span>
+                  <input type="radio" name="logo_bg" value="color_4" id="logo_bg_4">
+                  <label for="logo_bg_4"></label>
+                </span>
+                <span>
+                  <input type="radio" name="logo_bg" value="color_5" id="logo_bg_5">
+                  <label for="logo_bg_5"></label>
+                </span>
+                <span>
+                  <input type="radio" name="logo_bg" value="color_6" id="logo_bg_6">
+                  <label for="logo_bg_6"></label>
+                </span>
+                <span>
+                  <input type="radio" name="logo_bg" value="color_7" id="logo_bg_7">
+                  <label for="logo_bg_7"></label>
+                </span>
+                <span>
+                  <input type="radio" name="logo_bg" value="color_8" id="logo_bg_8">
+                  <label for="logo_bg_8"></label>
+                </span>
+			  </li>
+			  <li class="drop-title"><p>头部</p></li>
+			  <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="header_bg" value="default" id="header_bg_1" checked>
+                  <label for="header_bg_1"></label>                      
+                </span>                                                    
+                <span>                                                     
+                  <input type="radio" name="header_bg" value="color_2" id="header_bg_2">
+                  <label for="header_bg_2"></label>                      
+                </span>                                                    
+                <span>                                                     
+                  <input type="radio" name="header_bg" value="color_3" id="header_bg_3">
+                  <label for="header_bg_3"></label>
+                </span>
+                <span>
+                  <input type="radio" name="header_bg" value="color_4" id="header_bg_4">
+                  <label for="header_bg_4"></label>                      
+                </span>                                                    
+                <span>                                                     
+                  <input type="radio" name="header_bg" value="color_5" id="header_bg_5">
+                  <label for="header_bg_5"></label>                      
+                </span>                                                    
+                <span>                                                     
+                  <input type="radio" name="header_bg" value="color_6" id="header_bg_6">
+                  <label for="header_bg_6"></label>                      
+                </span>                                                    
+                <span>                                                     
+                  <input type="radio" name="header_bg" value="color_7" id="header_bg_7">
+                  <label for="header_bg_7"></label>
+                </span>
+                <span>
+                  <input type="radio" name="header_bg" value="color_8" id="header_bg_8">
+                  <label for="header_bg_8"></label>
+                </span>
+				</li>
+			  <li class="drop-title"><p>侧边栏</p></li>
+			  <li class="drop-skin-li clearfix">
+                <span class="inverse">
+                  <input type="radio" name="sidebar_bg" value="default" id="sidebar_bg_1" checked>
+                  <label for="sidebar_bg_1"></label>
+                </span>
+                <span>
+                  <input type="radio" name="sidebar_bg" value="color_2" id="sidebar_bg_2">
+                  <label for="sidebar_bg_2"></label>
+                </span>
+                <span>
+                  <input type="radio" name="sidebar_bg" value="color_3" id="sidebar_bg_3">
+                  <label for="sidebar_bg_3"></label>
+                </span>
+                <span>
+                  <input type="radio" name="sidebar_bg" value="color_4" id="sidebar_bg_4">
+                  <label for="sidebar_bg_4"></label>
+                </span>
+                <span>
+                  <input type="radio" name="sidebar_bg" value="color_5" id="sidebar_bg_5">
+                  <label for="sidebar_bg_5"></label>
+                </span>
+                <span>
+                  <input type="radio" name="sidebar_bg" value="color_6" id="sidebar_bg_6">
+                  <label for="sidebar_bg_6"></label>
+                </span>
+                <span>
+                  <input type="radio" name="sidebar_bg" value="color_7" id="sidebar_bg_7">
+                  <label for="sidebar_bg_7"></label>
+                </span>
+                <span>
+                  <input type="radio" name="sidebar_bg" value="color_8" id="sidebar_bg_8">
+                  <label for="sidebar_bg_8"></label>
+                </span>
+			  </li>
+		    </ul>
+		  </li>
+          <!--切换主题配色-->
+          <li class="dropdown dropdown-profile">
+          <jtk:currentUser>
+            <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">
+              <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" th:alt="${user.nickname}"/>
+              <span th:text="${user.nickname}">Jthink</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" id="topInfoList">
+              <li>
+                <a class="dropdown-item navlink" href="/system/user/profile" ><i class="mdi mdi-account"></i> 个人信息</a>
+              </li>
+              <li>
+                <a class="dropdown-item navlink" href="/system/user/updatePassword" ><i class="mdi mdi-lock-outline"></i> 修改密码</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="/system/adminlogout"><i class="mdi mdi-logout-variant"></i> 退出登录</a>
+              </li>
+            </ul>
+            </jtk:currentUser>
+          </li>
+        </ul>
+        
+      </nav>
+      
+    </header>
+    <!--End 头部信息-->
+    
+    <!--页面主要内容-->
+    <main class="lyear-layout-content" id="content_wrapper">
+      
+      <div class="container-fluid p-t-15">
+  
+        <div class="row">
+          <div class="col-md-6 col-xl-3">
+            <div class="card bg-primary text-white">
+              <div class="card-body clearfix">
+                <div class="flex-box">
+                  <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fs-22"></i></span>
+                  <span class="fs-22 lh-22">102</span>
+                </div>
+                <div class="text-right">新增用户</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-xl-3">
+            <div class="card bg-danger text-white">
+              <div class="card-body clearfix">
+                <div class="flex-box">
+                  <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fs-22"></i></span>
+                  <span class="fs-22 lh-22">920,000</span>
+                </div>
+                <div class="text-right">用户总数</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-xl-3">
+            <div class="card bg-success text-white">
+              <div class="card-body clearfix">
+                <div class="flex-box">
+                  <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-shopify fs-22"></i></span>
+                  <span class="fs-22 lh-22">34,005,000</span>
+                </div>
+                <div class="text-right">今日订单</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-xl-3">
+            <div class="card bg-purple text-white">
+              <div class="card-body clearfix">
+                <div class="flex-box">
+                  <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-comment-outline fs-22"></i></span>
+                  <span class="fs-22 lh-22">153 条</span>
+                </div>
+                <div class="text-right">新增评论</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-md-6"> 
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">每周用户</div>
+              </div>
+              <div class="card-body">
+                <canvas class="js-chartjs-bars"></canvas>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6"> 
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">交易历史记录</div>
+              </div>
+              <div class="card-body">
+                <canvas class="js-chartjs-lines"></canvas>
+              </div>
+            </div>
+          </div>
+           
+        </div>
+       <jtk:orderList isAdmin="true">
+        <div class="row" th:if="${not #lists.isEmpty(pageInfo.list)}">
+          
+          <div class="col-lg-12">
+            <div class="card">
+              <header class="card-header"><div class="card-title">最新订单</div></header>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>订单标题</th>
+                        <th>会员</th>
+                        <th>创建时间</th>
+                        <th>更新时间</th>
+                        <th>状态</th>
+                        <th>进度</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="order : ${pageInfo.list}">
+                        <td th:text="${order.id}">1</td>
+                        <td th:text="${order.orderTitle}">设计新主题</td>
+                        <td th:text="${order.buyerNickname}">会员</td>
+                        <td>[(${#dates.format(order.createTime,'yyyy-MM-dd HH:mm')})]</td>
+                        <td>[(${#dates.format(order.updateTime,'yyyy-MM-dd HH:mm')})]</td>
+                        <td><span class="badge badge-warning" th:text="${order.tradeStatus}">待定</span></td>
+                        <td>
+                          <div class="progress progress-striped progress-sm">
+                            <div class="progress-bar progress-bar-warning" style="width: 45%;"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>     
+     </jtk:orderList>          
+        <div class="row">
+          
+          <div class="col-lg-12">
+            <div class="card">
+              <header class="card-header"><div class="card-title">最新文章</div></header>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>项目名称</th>
+                        <th>创建时间</th>
+                        <th>更新时间</th>
+                        <th>状态</th>
+                        <th>进度</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <jtk:postList>
+                    <tr th:each="post : ${pageInfo.list}">
+                        <td th:text="${post.id}">1</td>
+                        <td th:text="${post.postTitle}">设计新主题</td>
+                        <td>[(${#dates.format(post.createTime,'yyyy-MM-dd HH:mm')})]</td>
+                        <td>[(${#dates.format(post.updateTime,'yyyy-MM-dd HH:mm')})]</td>
+                        <td><span class="badge badge-warning" th:text="${post.postStatus}">待定</span></td>
+                        <td>
+                          <div class="progress progress-striped progress-sm">
+                            <div class="progress-bar progress-bar-warning" style="width: 45%;"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </jtk:postList>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </main>
+    <!--End 页面主要内容-->
+  </div>
+</div>
+
+<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/js/jquery-confirm/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="/js/lyear-loading.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/jquery-validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/js/jquery-validate/messages_zh.min.js"></script>
+<script type="text/javascript" src="/js/ckeditor5/build/ckeditor.js"></script>
+ <script type="text/javascript" src="/js/Chart.min.js"></script>
+ <script type="text/javascript" src="/js/main.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    var $dashChartBarsCnt  = jQuery( '.js-chartjs-bars' )[0].getContext( '2d' ),
+        $dashChartLinesCnt = jQuery( '.js-chartjs-lines' )[0].getContext( '2d' );
+    var $dashChartBarsData = {
+		labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+		datasets: [
+			{
+				label: '注册用户',
+                borderWidth: 1,
+                borderColor: 'rgba(0, 0, 0, 0)',
+				backgroundColor: 'rgba(51, 202, 185, 0.5)',
+                hoverBackgroundColor: "rgba(51, 202, 185, 0.7)",
+                hoverBorderColor: "rgba(0, 0, 0, 0)",
+				data: [2500, 1500, 1200, 3200, 4800, 3500, 1500]
+			}
+		]
+	};
+    var $dashChartLinesData = {
+		labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
+		datasets: [
+			{
+				label: '交易资金',
+				data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50],
+				borderColor: '#358ed7',
+				backgroundColor: 'rgba(53, 142, 215, 0.175)',
+                borderWidth: 1,
+                fill: false,
+                lineTension: 0.5
+			}
+		]
+	};
+    
+    new Chart($dashChartBarsCnt, {
+        type: 'bar',
+        data: $dashChartBarsData
+    });
+    
+    var myLineChart = new Chart($dashChartLinesCnt, {
+        type: 'line',
+        data: $dashChartLinesData,
+    });
+});
+</script>    
+</body>
+</html>

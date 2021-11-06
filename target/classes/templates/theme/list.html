@@ -1,0 +1,43 @@
+      <style>
+      .screenImg{
+      height:130px;
+      }
+      </style>
+      <div class="container-fluid p-t-15">
+        <div class="row">
+          <div class="col-3" th:each="template:${templates}">
+            <div class="card">
+              <div class="card-header">
+                 <h5 th:text="${template.title}">标题</h5>
+              </div>
+              <div class="card-body">
+                <img th:src="'/'+${template.id}+'/'+ ${template.screenshot}" class="screenImg"/>
+              </div>
+              <footer class="card-footer">
+                <div class="example-left m-t-10 pull-left">
+                 作者: <a th:href="${template.authorWebsite}" target="_blank" th:text="${template.author}">wtsoftware</a>
+                </div>              
+                <div class="example-right pull-right">
+                  <a class="btn btn-primary" th:data-id="${template.id}" onclick="updateTheme(this.getAttribute('data-id'))"    th:classappend="${theme eq template.id}? 'disabled'">启用</a>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
+        <!-- .row --> 
+      </div>
+      <script>
+      function updateTheme(themeId){
+    		$Jtk.confirm({
+    			text:" 确定要启用当前主题模板?",
+    			confirmButtonText:"确定"
+    		},function(){
+    	          $.post("/system/appearance/theme/update",{themeId:themeId}, function (r) {
+    	              if (r.code === 200) {
+    	            	  loadUrlToMain("/system/appearance/themeList");
+    	            	  $Jtk.n_success(r.msg);
+    	              } else $Jtk.n_danger(r.msg);
+    	          }); 
+    		})    	  
+      }
+      </script>

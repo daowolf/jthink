@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.cms.mapper.TermRelationshipMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.cms.entity.TermRelationship">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="object_id" jdbcType="INTEGER" property="objectId" />
+    <result column="term_id" jdbcType="INTEGER" property="termId" />
+    <result column="term_order" jdbcType="INTEGER" property="termOrder" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, object_id, term_taxonomy_id, term_order
+  </sql>
+  <select id="getRelationsByTaxon" resultMap="BaseResultMap">
+  SELECT tr.* FROM jk_term_relationships tr left join jk_term tm on tr.term_id = tm.id where tm.taxonomy=#{taxonomy} and tr.object_id=#{objectId}
+  </select>
+  <delete id="deleteRelationByTaxon">
+  delete jtr from jk_term_relationships jtr left join jk_term tm on jtr.term_id=tm.id where tm.taxonomy=#{taxonomy} and jtr.object_id=#{objectId}
+  </delete>
+</mapper>

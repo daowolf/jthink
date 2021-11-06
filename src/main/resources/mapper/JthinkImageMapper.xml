@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.cms.mapper.JthinkImageMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.cms.entity.JthinkImage">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="src" jdbcType="VARCHAR" property="src" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+    <select id="queryPostImages" resultMap="BaseResultMap">
+    SELECT a.* FROM jk_post_image b left join jk_image a on a.id=b.img_id where b.post_id=#{postId}
+  </select>
+</mapper>

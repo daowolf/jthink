@@ -1,0 +1,59 @@
+      <th:block data-th-include="shop/coupon/selectUser"></th:block>
+      <div class="container-fluid p-t-15">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header"><h4 th:text="${coupon.title}">标题标签</h4></div>
+              <div class="card-body">
+                 <h5 th:if="${not #strings.isEmpty(coupon.quota)}" >配置总数量:<span th:text="${coupon.quota}"></span></h5>        
+                 <h5 th:if="${not #strings.isEmpty(coupon.takeCount)}" >已领取数量:<span th:text="${coupon.takeCount}"></span></h5>
+                 <h5 th:if="${not #strings.isEmpty(coupon.usedCount)}" >已使用取数量:<span th:text="${coupon.usedCount}"></span></h5>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <!-- .row -->        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-toolbar clearfix">
+                <form class="pull-right coupon-table-form form-inline" method="get" action="#!" role="form">
+                  <div class="form-group">
+                                         <select class="form-control" name="couStatus">
+                                            <option value="" selected>全部</option>
+                                            <option value="1">未使用</option>
+                                            <option value="2">已经使用</option>
+                                            <option value="3">已过期</option>
+                                            <option value="9">不可用</option>
+                                        </select>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text"  aria-label="用户名" name="userName" placeholder="用户名">
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-default" onclick="search()">搜索</button>
+                  </div>
+                </form>                
+              </div>             
+              <div class="card-body">
+               <div class="toolbar-btn-action" id="toolbar">
+                  <a class="btn btn-primary m-r-5" href="#!" data-toggle="modal" data-target="#selUserModal" data-whatever="@mdo"  ><i class="mdi mdi-plus"></i>新增</a>
+                  <a class="btn btn-danger" href="#!" onclick="deleteCouponUsers()" ><i class="mdi mdi-window-close"></i>删除</a>
+                </div>
+                <div class="table-responsive">
+                  <table id="couponUserTable" data-mobile-responsive="true" class="mb-bootstrap-table text-nowrap"></table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+<link rel="stylesheet" type="text/css" href="/js/bootstrap-table/bootstrap-table.min.css">
+<script type="text/javascript" src="/js/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>     
+<script type="text/javascript" data-th-src="@{/js/app/shop/coupon/couponUser.js}"></script> 
+<script data-th-inline="javascript">
+   var couponId =[[${coupon.id}]];
+</script>

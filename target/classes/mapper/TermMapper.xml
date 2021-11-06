@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.cms.mapper.TermMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.cms.entity.Term">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="slug" jdbcType="VARCHAR" property="slug" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="link_image" jdbcType="VARCHAR" property="linkImage" />
+    <result column="template" jdbcType="VARCHAR" property="template" />
+    <result column="term_order" jdbcType="INTEGER" property="termOrder" />
+    <result column="taxonomy" jdbcType="VARCHAR" property="taxonomy" /> 
+    <result column="counts" jdbcType="INTEGER" property="counts" />
+    <result column="description" jdbcType="VARCHAR" property="description"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, `name`,icon,link_image, slug,template, create_time, update_time
+  </sql>
+  <select id="queryPostTermsByTaxon" resultMap="BaseResultMap">
+    SELECT tm.* FROM jk_term tm left join jk_term_relationships jtr on tm.id=jtr.term_id where tm.taxonomy=#{taxonomy} and jtr.object_id=#{objectId}
+  </select>
+   <select id="queryHostPostTermsByTaxon" resultMap="BaseResultMap">
+        SELECT distinct tm.* FROM jk_term tm left join jk_term_relationships jtr on tm.id=jtr.term_id where tm.taxonomy=#{taxonomy} order by tm.counts desc limit #{counts}
+  </select>
+      <!--
+      这里取counts要用$符号取 其它用#
+    -->
+  <update id="updateCounts">
+  update  jk_term set counts=counts ${counts} where id=#{termId}
+  </update>
+</mapper>

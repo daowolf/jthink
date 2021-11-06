@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.cms.mapper.PostMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.cms.entity.Post">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="post_author" jdbcType="INTEGER" property="postAuthor" />
+    <result column="post_content" jdbcType="VARCHAR" property="postContent" />
+    <result column="post_title" jdbcType="VARCHAR" property="postTitle" />
+    <result column="post_excerpt" jdbcType="VARCHAR" property="postExcerpt" />
+    <result column="post_status" jdbcType="VARCHAR" property="postStatus" />
+    <result column="comment_status" jdbcType="VARCHAR" property="commentStatus" />
+    <result column="ping_status" jdbcType="VARCHAR" property="pingStatus" />
+    <result column="post_password" jdbcType="VARCHAR" property="postPassword" />
+    <result column="post_name" jdbcType="VARCHAR" property="postName" />
+    <result column="template" jdbcType="VARCHAR" property="template" />
+    <result column="img_preview" jdbcType="VARCHAR" property="imgPreview" />
+    <result column="pinged" jdbcType="VARCHAR" property="pinged" />
+    <result column="post_parent" jdbcType="VARCHAR" property="postParent" />
+    <result column="post_order" jdbcType="INTEGER" property="postOrder" />
+    <result column="post_type" jdbcType="VARCHAR" property="postType" />
+    <result column="origin_price" jdbcType="DECIMAL" property="originPrice" />
+    <result column="price" jdbcType="DECIMAL" property="price" />    
+    <result column="post_mime_type" jdbcType="VARCHAR" property="postMimeType" />
+    <result column="comment_count" jdbcType="INTEGER" property="commentCount" />
+    <result column="view_counts" jdbcType="INTEGER" property="viewCounts" />
+     <result column="sale_counts" jdbcType="INTEGER" property="saleCounts" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+    <resultMap id="withChildMap" type="com.jthink.cms.entity.Post">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="post_author" jdbcType="INTEGER" property="postAuthor" />
+    <result column="post_content" jdbcType="VARCHAR" property="postContent" />
+    <result column="post_title" jdbcType="VARCHAR" property="postTitle" />
+    <result column="post_excerpt" jdbcType="VARCHAR" property="postExcerpt" />
+    <result column="post_status" jdbcType="VARCHAR" property="postStatus" />
+    <result column="comment_status" jdbcType="VARCHAR" property="commentStatus" />
+    <result column="ping_status" jdbcType="VARCHAR" property="pingStatus" />
+    <result column="post_password" jdbcType="VARCHAR" property="postPassword" />
+    <result column="post_name" jdbcType="VARCHAR" property="postName" />
+    <result column="template" jdbcType="VARCHAR" property="template" />
+    <result column="img_preview" jdbcType="VARCHAR" property="imgPreview" />
+    <result column="pinged" jdbcType="VARCHAR" property="pinged" />
+    <result column="post_parent" jdbcType="VARCHAR" property="postParent" />
+    <result column="post_order" jdbcType="INTEGER" property="postOrder" />
+    <result column="post_type" jdbcType="VARCHAR" property="postType" />
+    <result column="origin_price" jdbcType="DECIMAL" property="originPrice" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="post_mime_type" jdbcType="VARCHAR" property="postMimeType" />
+    <result column="comment_count" jdbcType="INTEGER" property="commentCount" />
+    <result column="view_counts" jdbcType="INTEGER" property="viewCounts" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <collection property="children" column="id" ofType="com.jthink.cms.entity.Post" select="selectByPid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, post_author, post_content, post_title, post_excerpt, post_status, comment_status, 
+    ping_status, post_password, post_name, pinged, post_parent, post_order, post_type, 
+    post_mime_type,template,img_preview,view_counts,sale_counts, comment_count, create_time, update_time
+  </sql>
+  <!-- 查询所有，使用resultMap返回结果集，将数据组装成树形结构 -->
+  <select id="selectPostWithChild" resultMap="withChildMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from jk_posts
+    <where>
+    	 id=#{postId}
+    </where>
+  </select>
+    <!-- 根据PID查询菜单 -->
+  <select id="selectByPid"  resultMap="withChildMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jk_posts
+    <where>
+    	post_parent = #{pid}
+    </where>
+  </select>
+  <select id="queryFavoritePosts" resultMap="BaseResultMap">
+  SELECT post.* FROM jthink.jk_member_favourite fr left join jk_posts post on fr.favourite_id=post.id where fr.user_id=#{memberId}
+  </select>
+   <select id="queryPostsByTermId" resultMap="BaseResultMap">
+    SELECT distinct pt.* FROM jk_posts pt left join jk_term_relationships re on pt.id = re.object_id where 
+     <if test="postType != null and postType != ''">
+       pt.post_type=#{postType} 
+    </if>
+    <if test="termId != null and termId != ''">
+          and re.term_id=#{termId} 
+    </if>  
+    
+    order by pt.post_order asc,pt.create_time desc
+  </select>
+     <select id="queryByTermIds" resultMap="BaseResultMap">
+    SELECT distinct pt.* FROM jk_posts pt left join jk_term_relationships re on pt.id = re.object_id 
+    where re.term_id in
+	<foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+		#{id}
+	</foreach> 
+    order by pt.sale_counts desc
+  </select>
+     <select id="queryTopPostsByTermId" resultMap="BaseResultMap">
+    SELECT distinct pt.* FROM jk_posts pt left join jk_term_relationships re on pt.id = re.object_id where 
+     <if test="postType != null and postType != ''">
+       pt.post_type=#{postType} 
+    </if>
+    <if test="termId != null and termId != ''">
+          and re.term_id=#{termId} 
+    </if>  
+    
+    order by pt.sale_counts desc,pt.create_time desc
+  </select>
+  <update id="updateAddSaleCount">
+  update jk_posts set sale_counts=sale_counts+#{addCount} where id=#{postId}
+  </update>
+  <update id="updateAddCommentCount">
+  update jk_posts set comment_count=comment_count+#{addCount} where id=#{postId}
+  </update>
+   <select id="queryHotPosts" resultMap="BaseResultMap">
+    SELECT distinct pt.* FROM jk_posts pt left join jk_term_relationships re on pt.id = re.object_id where post_type='posts'
+    <if test="termId != null and termId != ''">
+          and re.term_id=#{termId} 
+    </if>  
+     order by pt.view_counts desc
+  </select>  
+</mapper>

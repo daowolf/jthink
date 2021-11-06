@@ -1,0 +1,192 @@
+<style>
+.lyear-dropdown-tree {
+    position: relative;
+    flex:1 1 0%;
+}
+.lyear-dropdown-tree .checkbox-box,
+.lyear-dropdown-tree .radio-box {
+    font-size: 15px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree .arrow {
+    margin-left: -15px;
+}
+.lyear-dropdown-tree .checkbox-box:before {
+    content: "\F131";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-checked:before {
+    content: "\F135";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F6F1";
+}
+.lyear-dropdown-tree .radio-box:before {
+    content: "\F130";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-checked:before {
+    content: "\F134";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F377";
+}
+.lyear-dropdown-tree .dropdown-menu {
+    min-width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-bottom: 13px;
+}
+.lyear-dropdown-tree .dropdown-menu > li {
+    margin-left:  15px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul {
+    list-style: none;
+    padding-left: 25px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul a {
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    padding: 3px 20px;
+}
+.lyear-dropdown-tree .dropdown-menu li a {
+    display: inline-block;
+    padding-left: 15px!important;
+    width: auto;
+}
+.lyear-dropdown-tree .dropdown-menu li a.lyear-dropdown-tree-a-checked {
+    color: #33cabb;
+}
+.lyear-dropdown-tree .dropdown-menu a:hover,
+.lyear-dropdown-tree .dropdown-menu a:active,
+.lyear-dropdown-tree .dropdown-menu a:focus {
+    background-color: transparent;
+}
+.lyear-dropdown-tree .form-control {
+    padding-right: 30px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree i.lyear-cert {
+    font-size: 20px;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+/*bootstrap-select插件用到的，也可以不用*/
+.bootstrap-select.open .dropdown-toggle {
+    border-color: #33cabb!important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+}
+.bootstrap-select.open .dropdown-menu.open {
+    border: 1px solid #ebebeb;
+}
+/*示例二、三、四、五*/
+.p-t-5 {
+    padding-top: 5px;
+}
+/*示例五*/
+.input-group-controls {
+    height: 36px;
+    flex: 1 1 0%;
+    border: 1px solid #F2F3F3;
+    padding-left: 15px;
+}
+</style> 
+<link href="/css/materialdesignicons.min.css" rel="stylesheet">
+<!-- fontIconPicker core CSS -->
+<link rel="stylesheet" type="text/css" href="/js/fontIconPicker3.1/css/base/jquery.fonticonpicker.min.css" />
+<!-- required default theme -->
+<link rel="stylesheet" type="text/css" href="js/fontIconPicker3.1/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css"/>              
+                <div class="modal fade" id="addPermissionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalGridTitle">新增菜单/按钮</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+		                <form id="permissionAddForm" class="row">
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text" id="permNameLabel">权限名称</span></div>
+				                     <input type="text" name="name" class="form-control">
+                                     <input type="hidden" name="oldName"  class="form-control">
+                                     <input type="hidden" name="id"  class="form-control">
+				              </div>
+				            </div>		
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</span></div>
+				                <div class="form-controls input-group-controls p-t-5">
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                     <input class="custom-control-input" type="radio" name="type" id="inlineRadio0" value="0">
+			                         <label class="custom-control-label" for="inlineRadio0">目录</label>
+				                  </div>
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                     <input class="custom-control-input" type="radio" name="type" id="inlineRadio1" value="1">
+			                         <label class="custom-control-label" for="inlineRadio1">菜单</label>
+				                  </div>				                  
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                     <input class="custom-control-input" type="radio" name="type" id="inlineRadio2" value="2">
+			                         <label class="custom-control-label" for="inlineRadio2">按钮</label>
+				                  </div>
+				                </div>
+				              </div>
+				            </div>
+				            <div class="form-group col-12 menu-url-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">权&nbsp;&nbsp;限url</span></div>
+                                <input id="menu-url"  type="text" name="url" class="form-control">
+				              </div>
+				            </div>	
+				            <div class="form-group col-12 menu-show-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">是否显示</span></div>
+			                      <select class="form-control selectpicker" name="isShow" id="isShow">
+			                           <option value="1">显示</option>
+			                           <option value="0">隐藏</option>
+			                      </select>
+				              </div>
+				            </div>					            				            				                            
+				            <div class="form-group col-12 menu-icon-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标</span></div>
+                                <input id="menu-icon"  type="text" name="icon" class="form-control">
+                                <span id="show-mdi"></span>
+				              </div>
+				            </div>	
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">权限标识</span></div>
+                                <input id="menu-perms"  type="text" name="perms" class="form-control">
+				              </div>
+				            </div>	
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序</span></div>
+                                <input id="orderNum"  type="number" name="orderNum" class="form-control">
+				              </div>
+				            </div>					            			            
+				          <div class="form-group col-12">
+				           <div class="input-group">
+					           <div class="input-group-prepend"><span class="input-group-text">上级菜单</span></div>
+					            <div class="lyear-dropdown-tree" id="lyear-dropdown-tree">
+					              <input type="text" class="form-control" id="parentSelect" name="parentSelect" placeholder="请选择上级菜单" data-toggle="dropdown">
+					              <input type="hidden" name="pid" id="pid"/>
+					            </div>
+				            </div>
+				          </div>		                  		                  		                  
+		                </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                        <button type="button" class="btn btn-primary"  name="save" id="permissionAddBtn">保存</button>
+                        <button class="btn-hide"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>

@@ -1,0 +1,506 @@
+<link href="/js/webuploader/webuploader.css" rel="stylesheet">
+<!--标签插件-->
+<link rel="stylesheet" type="text/css" href="js/jquery-tagsinput/jquery.tagsinput.min.css">
+<style>
+.lyear-dropdown-tree {
+    position: relative;
+    flex:1 1 0%;
+}
+.lyear-dropdown-tree .checkbox-box,
+.lyear-dropdown-tree .radio-box {
+    font-size: 15px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree .arrow {
+    margin-left: -15px;
+}
+.lyear-dropdown-tree .checkbox-box:before {
+    content: "\F131";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-checked:before {
+    content: "\F135";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F6F1";
+}
+.lyear-dropdown-tree .radio-box:before {
+    content: "\F130";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-checked:before {
+    content: "\F134";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F377";
+}
+.lyear-dropdown-tree .dropdown-menu {
+    min-width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-bottom: 13px;
+}
+.lyear-dropdown-tree .dropdown-menu > li {
+    margin-left:  15px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul {
+    list-style: none;
+    padding-left: 25px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul a {
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    padding: 3px 20px;
+}
+.lyear-dropdown-tree .dropdown-menu li a {
+    display: inline-block;
+    padding-left: 15px!important;
+    width: auto;
+}
+.lyear-dropdown-tree .dropdown-menu li a.lyear-dropdown-tree-a-checked {
+    color: #33cabb;
+}
+.lyear-dropdown-tree .dropdown-menu a:hover,
+.lyear-dropdown-tree .dropdown-menu a:active,
+.lyear-dropdown-tree .dropdown-menu a:focus {
+    background-color: transparent;
+}
+.lyear-dropdown-tree .form-control {
+    padding-right: 30px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree i.lyear-cert {
+    font-size: 20px;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+/*bootstrap-select插件用到的，也可以不用*/
+.bootstrap-select.open .dropdown-toggle {
+    border-color: #33cabb!important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+}
+.bootstrap-select.open .dropdown-menu.open {
+    border: 1px solid #ebebeb;
+}
+/*示例二、三、四、五*/
+.p-t-5 {
+    padding-top: 5px;
+}
+/*示例五*/
+.input-group-controls {
+    height: 36px;
+    flex: 1 1 0%;
+    border: 1px solid #F2F3F3;
+    padding-left: 15px;
+}
+@media (min-width: 576px){
+	.modal-dialog {
+	    max-width: 1050px;
+	}
+}
+
+/* uploader相关 */
+
+.example {
+    position: relative;
+    background-color: #fafafa;
+}
+#uploader .queueList {
+    border: 2px dashed #ececec;
+}
+#uploader .queueList.filled {
+    padding: 15px;
+    margin: 0;
+    border: 2px dashed transparent;
+}
+#uploader .queueList.webuploader-dnd-over {
+    border: 2px dashed #999999;
+}
+#uploader p {
+    margin: 0;
+}
+.element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+#uploader .placeholder {
+    min-height: 290px;
+    padding-top: 40px;
+    text-align: center;
+    color: #cccccc;
+    position: relative;
+}
+#uploader .placeholder:before {
+    font-family: "Material Design Icons";
+    font-size: 50px;
+    content: "\f552";
+}
+#uploader .placeholder .webuploader-pick {
+    font-size: 18px;
+    line-height: 44px;
+    padding: 0 30px;
+    *width: 120px;
+    color: #fff;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+#uploader .placeholder .flashTip {
+    color: #666666;
+    font-size: 12px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 20px;
+}
+#uploader .placeholder .flashTip a {
+    color: #0785d1;
+    text-decoration: none;
+}
+#uploader .placeholder .flashTip a:hover {
+    text-decoration: underline;
+}
+#uploader .filelist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#uploader .filelist:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+#uploader .filelist li {
+    width: 110px;
+    height: 110px;
+    background-color: #fafafa;
+    text-align: center;
+    margin: 0 8px 20px 0;
+    position: relative;
+    display: inline;
+    float: left;
+    overflow: hidden;
+    font-size: 12px;
+}
+#uploader .filelist li p.log {
+    position: relative;
+    top: -45px;
+}
+#uploader .filelist li p.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow : ellipsis;
+    top: 5px;
+    text-indent: 5px;
+    text-align: left;
+}
+#uploader .filelist li p.progress {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 50;
+    margin: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background-color: transparent;
+    -webkit-box-shadow: 0 0 0;
+}
+#uploader .filelist li p.imgWrap {
+    position: relative;
+    z-index: 2;
+    line-height: 110px;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 110px;
+    height: 110px;
+
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+
+    -webit-transition: 200ms ease-out;
+    -moz-transition: 200ms ease-out;
+    -o-transition: 200ms ease-out;
+    -ms-transition: 200ms ease-out;
+    transition: 200ms ease-out;
+}
+#uploader .filelist li img {
+    width: 100%;
+}
+#uploader .filelist li p.error {
+    background: #f43838;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 28px;
+    line-height: 28px;
+    width: 100%;
+    z-index: 100;
+}
+#uploader .filelist li .success {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0px;
+    height: 0px;
+    border-bottom: 40px solid #33cabb;
+    border-left: 40px solid transparent;
+    z-index: 200;
+}
+#uploader .filelist li .success:after {
+    font-family: "Material Design Icons";
+    font-size: 22px;
+    content: "\f12c";
+    position: absolute;
+    right: 0px;
+    bottom: -43px;
+    color: #fff;
+}
+#uploader .filelist div.file-panel {
+    position: absolute;
+    height: 0;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#80000000', endColorstr='#80000000')\0;
+    background: rgba( 0, 0, 0, 0.5 );
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 300;
+}
+#uploader .filelist div.file-panel span {
+    width: 24px;
+    height: 24px;
+    display: inline;
+    float: right;
+    overflow: hidden;
+    margin: 5px 1px 1px;
+    cursor: pointer;
+    font-family: "Material Design Icons";
+    font-size: 14px;
+    color: #33cabb;
+	-webkit-transition: .2s linear;
+	transition: .2s linear
+}
+#uploader .filelist div.file-panel span.rotateLeft:after {
+    content: "\f465";
+}
+#uploader .filelist div.file-panel span.rotateRight:after {
+    content: "\f467";
+}
+#uploader .filelist div.file-panel span.cancel:after {
+    content: "\f1c0";
+}
+#uploader .filelist div.file-panel span.rotateLeft:hover,
+#uploader .filelist div.file-panel span.rotateRight:hover,
+#uploader .filelist div.file-panel span.cancel:hover {
+    color: #fff;
+}
+#uploader .statusBar {
+    height: 63px;
+    border-top: 1px solid rgba(77,82,89,0.05);
+    padding: 0 20px;
+    line-height: 63px;
+    vertical-align: middle;
+    position: relative;
+}
+#uploader .statusBar .progress {
+    width: 198px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    margin: 0 10px 0 0;
+}
+#uploader .statusBar .info {
+    display: inline-block;
+}
+#uploader .statusBar .btns {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 36px;
+}
+#filePickerBtn {
+    display: inline-block;
+    float: left;
+}
+#uploader .statusBar .btns .webuploader-pick,
+#uploader .statusBar .btns .uploadBtn,
+#uploader .statusBar .btns .uploadBtn.state-uploading,
+#uploader .statusBar .btns .uploadBtn.state-paused {
+    background: #fcfdfe;
+    border: 1px solid #ebebeb;
+    color: #8b95a5;
+    padding: 0px 12px;
+    display: inline-block;
+    border-radius: 2px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    float: left;
+}
+#uploader .statusBar .btns .webuploader-pick-hover,
+#uploader .statusBar .btns .uploadBtn.state-uploading:hover,
+#uploader .statusBar .btns .uploadBtn.state-paused:hover {
+	background-color: #f9fafb;
+	border-color: #ebebeb;
+	color: #4d5259
+}
+#uploader .statusBar .btns .uploadBtn {
+    background: #33cabb;
+    color: #fff;
+    border-color: #33cabb;
+}
+#uploader .statusBar .btns .uploadBtn:hover {
+    background: #52d3c7;
+    border-color: #52d3c7;
+    color: #fff;
+}
+#uploader .statusBar .btns .uploadBtn.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+#filePicker div:nth-child(2){width:100%!important;height:100%!important;}
+</style> 
+<link href="/css/materialdesignicons.min.css" rel="stylesheet">
+<!-- fontIconPicker core CSS -->
+<link rel="stylesheet" type="text/css" href="/js/fontIconPicker3.1/css/base/jquery.fonticonpicker.min.css" />
+<!-- required default theme -->
+<link rel="stylesheet" type="text/css" href="js/fontIconPicker3.1/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css"/>              
+                <div class="modal fade" id="addOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalGridTitle">新增订单</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+				        <div class="row no-gutters">
+				          <div class="col-lg-12">
+				            <div class="card">
+				              <div class="card-body">
+				                <form action="#!" method="post" class="row no-gutters" id="orderAddForm">
+				                 <div class="col-9 no-gutters">
+				                  <div class="form-group col-md-12">
+				                    <label for="title">标题</label>
+				                    <input type="text" class="form-control" id="postTitle" name="postTitle" value="" placeholder="请输入标题" />
+				                    <input type="hidden" name="id" id="id"/>
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="seo_keywords">关键词</label>
+				                    <input type="text" class="form-control" id="seoKeywords" name="seoKeywords" value="" placeholder="关键词" />
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="seo_description">描述</label>
+				                    <textarea class="form-control" id="postExcerpt" name="postExcerpt" rows="5"  placeholder="描述"></textarea>
+				                  </div>
+					            <div class="form-group col-md-12 file-group">
+					              <label for="web_site_logo">预览主图</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control file-value" name="imgPreview" value="" placeholder="预览图片地址" />
+					                <input type="file" accaccept=".png,.jpg,.jpeg,.bmp,.gif" class="d-none" />
+					                <div class="input-group-append">
+					                  <button class="btn btn-default file-browser" type="button">上传图片</button>
+					                </div>
+					              </div>
+					            </div>
+							    <div class="form-group col-md-12">
+							        <label for="uploader">图片列表</label>
+							          <div id="uploader" class="example">
+							            <input type="hidden" name="pics" value="" id="imgIdList"/>
+							            <div class="queueList">
+							              <div id="dndArea" class="placeholder">
+							                <div id="filePicker"></div>
+							                <p>或将照片拖到这里，单次最多可选300张</p>
+							              </div>
+							            </div>
+							            <div class="statusBar" style="display:none;">
+							              <div class="progress">
+							                <div class="progress-bar progress-bar-striped active">0%</div>
+							              </div>
+							              <div class="info"></div>
+							              <div class="btns">
+							                <div id="filePickerBtn"></div><div class="uploadBtn">开始上传</div>
+							              </div>
+							            </div>
+							          </div>
+							    </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="content">内容</label>
+				                     <textarea class="ignore form-control" id="postContent" name="postContent"   placeholder="商品内容"></textarea>
+				                  </div>
+				                  </div>
+				                  <div class="col-3">
+					  			     <div class="form-group col-12">
+								           <label for="termId">分类</label>
+								            <div class="lyear-dropdown-tree" id="lyear-dropdown-tree">
+								              <input type="text" class="form-control" id="termSelect" name="termSelect" placeholder="请选择商品分类" data-toggle="dropdown">
+								              <input type="hidden" name="termIds" id="termIds"/>
+								            </div>
+							          </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="template">模板</label>
+				                    <input type="text" class="form-control" id="template" name="template"  placeholder="模板" />
+				                  </div>							          
+							       <div class="form-group col-md-12">
+				                    <label for="tags">标签</label>
+				                    <input class="js-tags-input ignore form-control" type="text" id="tags" name="tags"  />
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="sort">排序</label>
+				                    <input type="number" class="form-control" id="postOrder" name="postOrder"/>
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="sort">价格</label>
+				                    <input type="number" class="form-control" id="price" name="price"/>
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="sort">原价</label>
+				                    <input type="number" class="form-control" id="oriPrice" name="originPrice"/>
+				                  </div>				                  				                  				                  
+				                  <div class="form-group col-md-12">
+				                    <label for="status">评论状态</label>
+				                    <div class="clearfix">
+				                      <div class="custom-control custom-radio custom-control-inline">
+				      	              <input type="radio" id="statusOne" name="commentStatus" class="custom-control-input" value="closed">
+				      	              <label class="custom-control-label" for="statusOne">关闭</label>
+				      	            </div>
+				      	            <div class="custom-control custom-radio custom-control-inline">
+				      	              <input type="radio" id="statusTwo" name="commentStatus" class="custom-control-input" value="open">
+				      	              <label class="custom-control-label" for="statusTwo">开启</label>
+				      	            </div>
+				                    </div>
+				                  </div>				                  
+				                  </div>
+				                </form>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                        <button type="button" class="btn btn-primary"  name="save" id="orderAddBtn">保存</button>
+                        <button class="btn-hide"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>

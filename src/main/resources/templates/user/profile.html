@@ -1,0 +1,65 @@
+ <div class="container-fluid p-t-15">
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                
+                <div class="media">
+                  <img src="images/users/avatar.jpg" alt="..." class="img-avatar mr-3">
+                  <div class="media-body">
+                    <button class="btn btn-default">修改头像</button>
+                    <p class="mt-1 mb-0">选择一张你喜欢的图片，裁剪后会自动生成264x264大小，上传图片大小不能超过2M。</p>
+                  </div>
+                </div>
+                <hr>
+                <form method=" " action="#!" class="site-form" id="profileForm">
+                  <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" class="form-control" name="username" id="username" th:value="${user.username}" disabled="disabled">
+                     <input type="hidden"  name="id" th:value="${user.id}">
+                  </div>
+                  <div class="form-group">
+                    <label for="nickname">昵称</label>
+                    <input type="text" class="form-control" name="nickname" id="nickname" placeholder="输入您的昵称" th:value="${user.nickname}">
+                  </div>
+                  <div class="form-group">
+                    <label for="nickname">性别</label>
+				                <div class="form-controls input-group-controls p-t-5">
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                    <input type="radio" class="custom-control-input" name="ssex" value="0" id="sexRadio0" th:checked="${user.ssex=='0'}">
+				                    <label class="custom-control-label" for="sexRadio0">男</label>
+				                  </div>
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                    <input type="radio" class="custom-control-input" name="ssex" value="1" id="sexRadio1" th:checked="${user.ssex=='1'}">
+				                    <label class="custom-control-label" for="sexRadio1">女</label>
+				                  </div>
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                    <input type="radio" class="custom-control-input" name="ssex" value="2" id="sexRadio2" th:checked="${user.ssex=='2'}">
+				                    <label class="custom-control-label" for="sexRadio2">保密</label>
+				                  </div>
+				                </div>
+                  </div>                  
+                   <div class="form-group">
+                    <label for="nickname">电话</label>
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="请输入电话" th:value="${user.phone}">
+                  </div>                 
+                  <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="请输入正确的邮箱地址" th:value="${user.email}">
+                    <small id="emailHelp" class="form-text text-muted">请保证您填写的邮箱地址是正确的。</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="remark">简介</label>
+                    <textarea class="form-control" name="remarks" id="remarks" rows="3" th:text="${user.remarks}"></textarea>
+                  </div>
+                </form>
+        <button type="button" class="btn btn-primary" id="updateProfileBtn">保存</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+<script type="text/javascript" src="/js/app/user/profile.js"></script>     

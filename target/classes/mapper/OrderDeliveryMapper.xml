@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.shop.mapper.OrderDeliveryMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.OrderDelivery">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="delivery_id" jdbcType="INTEGER" property="deliveryId" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="delivery_number" jdbcType="VARCHAR" property="deliveryNumber" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="addr_username" jdbcType="VARCHAR" property="addrUsername" />
+    <result column="addr_mobile" jdbcType="VARCHAR" property="addrMobile" />
+    <result column="addr_province" jdbcType="VARCHAR" property="addrProvince" />
+    <result column="addr_city" jdbcType="VARCHAR" property="addrCity" />
+    <result column="addr_district" jdbcType="VARCHAR" property="addrDistrict" />
+    <result column="addr_detail" jdbcType="VARCHAR" property="addrDetail" />
+    <result column="addr_zipcode" jdbcType="VARCHAR" property="addrZipcode" />
+    <result column="delivery_status" jdbcType="TINYINT" property="deliveryStatus" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jthink.shop.entity.OrderDelivery">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="remarks" jdbcType="LONGVARCHAR" property="remarks" />
+    <result column="options" jdbcType="LONGVARCHAR" property="options" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, username, user_id, order_id, delivery_id, company, delivery_number, start_time, 
+    finish_time, addr_username, addr_mobile, addr_province, addr_city, addr_district, 
+    addr_detail, addr_zipcode, delivery_status, modified_time, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    remarks, `options`
+  </sql>
+</mapper>

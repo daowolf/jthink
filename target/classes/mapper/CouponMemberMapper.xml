@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.shop.mapper.CouponMemberMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.CouponMember">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="coupon_id" jdbcType="INTEGER" property="couponId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="cou_status" jdbcType="TINYINT" property="couStatus" />
+    <result column="used_order_id" jdbcType="INTEGER" property="usedOrderId" />
+    <result column="order_ns" jdbcType="VARCHAR" property="orderNs" />
+    <result column="user_payment_id" jdbcType="INTEGER" property="userPaymentId" />
+    <result column="use_time" jdbcType="TIMESTAMP" property="useTime" />
+    <result column="get_time" jdbcType="TIMESTAMP" property="getTime" />
+    <result column="send_uid" jdbcType="INTEGER" property="sendUid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, coupon_id, title, user_id, user_name, cou_status, used_order_id, order_ns, user_payment_id, 
+    use_time, get_time, send_uid, create_time
+  </sql>
+</mapper>

@@ -1,0 +1,27 @@
+22:43:56.552 sms [main] INFO  com.jthink.JthinkApplication - Starting JthinkApplication using Java 1.8.0_191 on 192.168.1.4 with PID 3832 (/Users/kervin/IdeaProjects/jthink/target/classes started by kervin in /Users/kervin/IdeaProjects/jthink)
+22:43:56.559 sms [main] INFO  com.jthink.JthinkApplication - The following profiles are active: dev
+22:43:58.784 sms [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+22:43:58.784 sms [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2143 ms
+22:44:02.154 sms [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+22:44:02.302 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Starting...
+22:44:33.501 sms [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+22:45:49.564 sms [main] INFO  com.jthink.JthinkApplication - Starting JthinkApplication using Java 1.8.0_191 on 192.168.1.4 with PID 3838 (/Users/kervin/IdeaProjects/jthink/target/classes started by kervin in /Users/kervin/IdeaProjects/jthink)
+22:45:49.567 sms [main] INFO  com.jthink.JthinkApplication - The following profiles are active: dev
+22:45:51.530 sms [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+22:45:51.530 sms [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1875 ms
+22:45:54.873 sms [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+22:45:55.005 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Starting...
+22:46:26.146 sms [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+22:47:37.608 sms [main] INFO  com.jthink.JthinkApplication - Starting JthinkApplication using Java 1.8.0_191 on 192.168.1.4 with PID 3846 (/Users/kervin/IdeaProjects/jthink/target/classes started by kervin in /Users/kervin/IdeaProjects/jthink)
+22:47:37.613 sms [main] INFO  com.jthink.JthinkApplication - The following profiles are active: dev
+22:47:39.567 sms [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+22:47:39.568 sms [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1885 ms
+22:47:42.877 sms [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+22:47:43.012 sms [main] INFO  com.zaxxer.hikari.HikariDataSource - FebsHikariCP - Starting...
+22:48:14.150 sms [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.

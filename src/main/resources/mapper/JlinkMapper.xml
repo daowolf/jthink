@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.cms.mapper.JlinkMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.cms.entity.Jlink">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="link_url" jdbcType="VARCHAR" property="linkUrl" />
+    <result column="link_name" jdbcType="VARCHAR" property="linkName" />
+    <result column="link_image" jdbcType="VARCHAR" property="linkImage" />
+    <result column="link_target" jdbcType="VARCHAR" property="linkTarget" />
+    <result column="link_description" jdbcType="VARCHAR" property="linkDescription" />
+    <result column="link_visible" jdbcType="VARCHAR" property="linkVisible" />
+    <result column="link_owner" jdbcType="INTEGER" property="linkOwner" />
+    <result column="link_rating" jdbcType="INTEGER" property="linkRating" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, link_url, link_name, link_image, link_target, link_description, link_visible, 
+    link_owner, link_rating, create_time, update_time
+  </sql>
+      <select id="queryLinkByTermId" resultMap="BaseResultMap">
+    SELECT pt.* FROM jk_links pt left join jk_term_relationships re on pt.id = re.object_id where re.term_id=#{termId}
+  </select>
+</mapper>

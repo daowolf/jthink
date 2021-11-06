@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.shop.mapper.CouponMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.Coupon">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="with_amount" jdbcType="DECIMAL" property="withAmount" />
+    <result column="with_award" jdbcType="BIT" property="withAward" />
+    <result column="with_owner" jdbcType="BIT" property="withOwner" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="quota" jdbcType="INTEGER" property="quota" />
+    <result column="take_count" jdbcType="INTEGER" property="takeCount" />
+    <result column="used_count" jdbcType="INTEGER" property="usedCount" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="valid_type" jdbcType="TINYINT" property="validType" />
+    <result column="valid_start_time" jdbcType="TIMESTAMP" property="validStartTime" />
+    <result column="valid_end_time" jdbcType="TIMESTAMP" property="validEndTime" />
+    <result column="valid_days" jdbcType="INTEGER" property="validDays" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="cou_status" jdbcType="CHAR" property="couStatus" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="products_type" jdbcType="SMALLINT" property="productsType" />
+    <result column="products_value" jdbcType="VARCHAR" property="productsValue" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jthink.shop.entity.Coupon">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="options" jdbcType="LONGVARCHAR" property="options" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, title, icon, `type`, with_amount, with_award, with_owner, amount, quota, take_count, 
+    used_count, start_time, end_time, valid_type, valid_start_time, valid_end_time, valid_days, 
+    create_user_id, cou_status, code, products_type, products_value, create_time, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    `options`
+  </sql>
+</mapper>

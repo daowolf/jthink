@@ -1,0 +1,203 @@
+<!--标签插件-->
+<link rel="stylesheet" type="text/css" href="js/jquery-tagsinput/jquery.tagsinput.min.css">
+<style>
+.lyear-dropdown-tree {
+    position: relative;
+    flex:1 1 0%;
+}
+.lyear-dropdown-tree .checkbox-box,
+.lyear-dropdown-tree .radio-box {
+    font-size: 15px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree .arrow {
+    margin-left: -15px;
+}
+.lyear-dropdown-tree .checkbox-box:before {
+    content: "\F131";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-checked:before {
+    content: "\F135";
+}
+.lyear-dropdown-tree .checkbox-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F6F1";
+}
+.lyear-dropdown-tree .radio-box:before {
+    content: "\F130";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-checked:before {
+    content: "\F134";
+}
+.lyear-dropdown-tree .radio-box.lyear-dropdown-tree-half-checked:before {
+    content: "\F377";
+}
+.lyear-dropdown-tree .dropdown-menu {
+    min-width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-bottom: 13px;
+}
+.lyear-dropdown-tree .dropdown-menu > li {
+    margin-left:  15px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul {
+    list-style: none;
+    padding-left: 25px;
+}
+.lyear-dropdown-tree .dropdown-menu li ul a {
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    padding: 3px 20px;
+}
+.lyear-dropdown-tree .dropdown-menu li a {
+    display: inline-block;
+    padding-left: 15px!important;
+    width: auto;
+}
+.lyear-dropdown-tree .dropdown-menu li a.lyear-dropdown-tree-a-checked {
+    color: #33cabb;
+}
+.lyear-dropdown-tree .dropdown-menu a:hover,
+.lyear-dropdown-tree .dropdown-menu a:active,
+.lyear-dropdown-tree .dropdown-menu a:focus {
+    background-color: transparent;
+}
+.lyear-dropdown-tree .form-control {
+    padding-right: 30px;
+    cursor: pointer;
+}
+.lyear-dropdown-tree i.lyear-cert {
+    font-size: 20px;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+/*bootstrap-select插件用到的，也可以不用*/
+.bootstrap-select.open .dropdown-toggle {
+    border-color: #33cabb!important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(51, 202, 187, .6);
+}
+.bootstrap-select.open .dropdown-menu.open {
+    border: 1px solid #ebebeb;
+}
+/*示例二、三、四、五*/
+.p-t-5 {
+    padding-top: 5px;
+}
+/*示例五*/
+.input-group-controls {
+    height: 36px;
+    flex: 1 1 0%;
+    border: 1px solid #F2F3F3;
+    padding-left: 15px;
+}
+@media (min-width: 576px){
+	.modal-dialog {
+	    max-width: 1050px;
+	}
+}
+</style> 
+<link href="/css/materialdesignicons.min.css" rel="stylesheet">
+<!-- fontIconPicker core CSS -->
+<link rel="stylesheet" type="text/css" href="/js/fontIconPicker3.1/css/base/jquery.fonticonpicker.min.css" />
+<!-- required default theme -->
+<link rel="stylesheet" type="text/css" href="js/fontIconPicker3.1/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css"/>              
+                <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalGridTitle">新增文章</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+				        <div class="row no-gutters">
+				          <div class="col-lg-12">
+				            <div class="card">
+				              <div class="card-body">
+				                <form action="#!" method="post" class="row no-gutters" id="postAddForm">
+				                 <div class="col-9 no-gutters">
+				                  <div class="form-group col-md-12">
+				                    <label for="title">标题</label>
+				                    <input type="text" class="form-control" id="postTitle" name="postTitle" value="" placeholder="请输入标题" />
+				                    <input type="hidden" name="id" id="id"/>
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="seo_keywords">关键词</label>
+				                    <input type="text" class="form-control" id="seoKeywords" name="seoKeywords" value="" placeholder="关键词" />
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="seo_description">描述</label>
+				                    <textarea class="form-control" id="postExcerpt" name="postExcerpt" rows="5"  placeholder="描述"></textarea>
+				                  </div>
+					            <div class="form-group col-md-12 file-group">
+					              <label for="web_site_logo">预览图片</label>
+					              <div class="input-group">
+					                <input type="text" class="form-control file-value" name="imgPreview" value="" placeholder="预览图片地址" />
+					                <input type="file" accaccept=".png,.jpg,.jpeg,.bmp,.gif" class="d-none" />
+					                <div class="input-group-append">
+					                  <button class="btn btn-default file-browser" type="button">上传图片</button>
+					                </div>
+					              </div>
+					            </div>				                  
+				                  <div class="form-group col-md-12">
+				                    <label for="content">内容</label>
+				                     <textarea class="ignore form-control" id="postContent" name="postContent"   placeholder="文章内容"></textarea>
+				                  </div>
+				                  </div>
+				                  <div class="col-3">
+					  			     <div class="form-group col-12">
+								           <label for="termId">分类</label>
+								            <div class="lyear-dropdown-tree" id="lyear-dropdown-tree">
+								              <input type="text" class="form-control" id="termSelect" name="termSelect" placeholder="请选择文章分类" data-toggle="dropdown">
+								              <input type="hidden" name="termIds" id="termIds"/>
+								            </div>
+							          </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="template">模板</label>
+				                    <input type="text" class="form-control" id="template" name="template"  placeholder="模板" />
+				                  </div>							          
+							       <div class="form-group col-md-12">
+				                    <label for="tags">标签</label>
+				                    <input class="js-tags-input ignore form-control" type="text" id="tags" name="tags"  />
+				                  </div>
+				                  <div class="form-group col-md-12">
+				                    <label for="sort">排序</label>
+				                    <input type="number" class="form-control" id="postOrder" name="postOrder" value="0" />
+				                  </div>				                  
+				                  <div class="form-group col-md-12">
+				                    <label for="status">评论状态</label>
+				                    <div class="clearfix">
+				                      <div class="custom-control custom-radio custom-control-inline">
+				      	              <input type="radio" id="statusOne" name="commentStatus" class="custom-control-input" value="closed">
+				      	              <label class="custom-control-label" for="statusOne">关闭</label>
+				      	            </div>
+				      	            <div class="custom-control custom-radio custom-control-inline">
+				      	              <input type="radio" id="statusTwo" name="commentStatus" class="custom-control-input" value="open">
+				      	              <label class="custom-control-label" for="statusTwo">开启</label>
+				      	            </div>
+				                    </div>
+				                  </div>				                  
+				                  </div>
+				                </form>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                        <button type="button" class="btn btn-primary"  name="save" id="postAddBtn">保存</button>
+                        <button class="btn-hide"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+			<script type="text/javascript" src="/js/bootstrap.lyear.dropdowntree.min.js"></script>
+			<!-- fontIconPicker JS -->
+			<script type="text/javascript" src="/js/fontIconPicker3.1/js/jquery.fonticonpicker.min.js"></script>                

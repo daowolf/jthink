@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.member.mapper.MemberOrderMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.MemberOrder">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ns" jdbcType="VARCHAR" property="ns" />
+    <result column="product_type" jdbcType="VARCHAR" property="productType" />
+    <result column="order_title" jdbcType="VARCHAR" property="orderTitle" />
+    <result column="order_summary" jdbcType="VARCHAR" property="orderSummary" />
+    <result column="buyer_id" jdbcType="INTEGER" property="buyerId" />
+    <result column="buyer_nickname" jdbcType="VARCHAR" property="buyerNickname" />
+    <result column="buyer_msg" jdbcType="VARCHAR" property="buyerMsg" />
+    <result column="delivery_fee" jdbcType="DECIMAL" property="deliveryFee" />
+    <result column="order_total_amount" jdbcType="DECIMAL" property="orderTotalAmount" />
+    <result column="order_real_amount" jdbcType="DECIMAL" property="orderRealAmount" />
+    <result column="coupon_user_id" jdbcType="INTEGER" property="couponUserId" />
+    <result column="coupon_amount" jdbcType="DECIMAL" property="couponAmount" />
+    <result column="pay_status" jdbcType="TINYINT" property="payStatus" />
+    <result column="pay_success_amount" jdbcType="DECIMAL" property="paySuccessAmount" />
+    <result column="pay_success_time" jdbcType="TIMESTAMP" property="paySuccessTime" />
+    <result column="pay_success_proof" jdbcType="VARCHAR" property="paySuccessProof" />
+    <result column="pay_success_remarks" jdbcType="VARCHAR" property="paySuccessRemarks" />
+    <result column="payment_id" jdbcType="INTEGER" property="paymentId" />
+    <result column="payment_outer_id" jdbcType="VARCHAR" property="paymentOuterId" />
+    <result column="payment_outer_user" jdbcType="VARCHAR" property="paymentOuterUser" />
+    <result column="delivery_addr_username" jdbcType="VARCHAR" property="deliveryAddrUsername" />
+    <result column="delivery_addr_mobile" jdbcType="VARCHAR" property="deliveryAddrMobile" />
+    <result column="delivery_addr_province" jdbcType="VARCHAR" property="deliveryAddrProvince" />
+    <result column="delivery_addr_city" jdbcType="VARCHAR" property="deliveryAddrCity" />
+    <result column="delivery_addr_district" jdbcType="VARCHAR" property="deliveryAddrDistrict" />
+    <result column="delivery_addr_detail" jdbcType="VARCHAR" property="deliveryAddrDetail" />
+    <result column="delivery_addr_zipcode" jdbcType="VARCHAR" property="deliveryAddrZipcode" />
+    <result column="invoice_id" jdbcType="INTEGER" property="invoiceId" />
+    <result column="invoice_status" jdbcType="TINYINT" property="invoiceStatus" />
+    <result column="trade_status" jdbcType="TINYINT" property="tradeStatus" />
+    <result column="del_status" jdbcType="TINYINT" property="delStatus" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jthink.shop.entity.MemberOrder">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="remarks" jdbcType="LONGVARCHAR" property="remarks" />
+    <result column="options" jdbcType="LONGVARCHAR" property="options" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, ns, product_type, order_title, order_summary, buyer_id, buyer_nickname, buyer_msg, 
+    delivery_fee, order_total_amount, order_real_amount, coupon_user_id, coupon_amount, 
+    pay_status, pay_success_amount, pay_success_time, pay_success_proof, pay_success_remarks, 
+    payment_id, payment_outer_id, payment_outer_user, delivery_addr_username, delivery_addr_mobile, 
+    delivery_addr_province, delivery_addr_city, delivery_addr_district, delivery_addr_detail, 
+    delivery_addr_zipcode, invoice_id, invoice_status, trade_status, del_status, modified_time, 
+    create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    remarks, `options`
+  </sql>
+</mapper>

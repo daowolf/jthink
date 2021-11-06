@@ -1,0 +1,29 @@
+<div data-th-insert="cms/page/pageAdd"></div>   
+<div class="container-fluid p-t-15">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+      <header class="card-header"><div class="card-title">页面管理</div></header>
+        <div class="card-body">
+          <div id="toolbar" class="toolbar-btn-action">
+            <button id="btn_add" type="button" class="btn btn-primary m-r-5" data-toggle="modal" data-target="#addPageModal">
+              <span class="mdi mdi-plus" aria-hidden="true"></span>新增
+            </button>
+            <button id="btn_delete" type="button" class="btn btn-danger" onclick="deletePages()">
+              <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
+            </button>
+          </div>
+           <div class="table-responsive">  
+             <table class="table text-nowrap" id="pageTable"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" type="text/css" href="/js/bootstrap-table/bootstrap-table.min.css">
+<script type="text/javascript" src="/js/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="/js/app/page/page.js"></script>
+<script type="text/javascript" src="/js/app/page/pageAdd.js"></script>
+<script type="text/javascript" src="/js/app/page/pageEdit.js"></script>

@@ -1,0 +1,58 @@
+<link href="/css/materialdesignicons.min.css" rel="stylesheet">
+<!-- fontIconPicker core CSS -->
+<link rel="stylesheet" type="text/css" href="/js/fontIconPicker3.1/css/base/jquery.fonticonpicker.min.css" />
+<!-- required default theme -->
+<link rel="stylesheet" type="text/css" href="js/fontIconPicker3.1/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css"/>              
+                <div class="modal fade" id="addCommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalGridTitle">修改评论</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+		                <form id="commentAddForm" class="row">
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text" id="commentName">文章标题</span></div>
+				                     <input type="text" name="postTitle" id="postTitle" readonly="readonly" class="form-control" th:value="${post.postTitle}">
+                                     <input type="hidden" name="id"  class="form-control">
+                                     <input type="hidden" name="commentPostId" th:value="${post.id}">
+				              </div>
+				            </div>		
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">评论内容</span></div>
+                                <textarea class="form-control" id="commentContent" name="commentContent" rows="5"  placeholder="评论内容"></textarea>
+				              </div>
+				            </div>					            
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序</span></div>
+                                <input id="termOrder"  type="text" name="commentOrder" class="form-control">
+				              </div>
+				            </div>	
+				            <div class="form-group col-md-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">审核状态</span></div>
+			                      <select class="form-control selectpicker"   name="commentApproved" id="commentApproved">
+			                        <option value="auditing">审核中</option>
+			                        <option value="approved">通过</option>
+			                        <option value="refuesd">拒绝</option>
+			                      </select>
+				              </div>
+				            </div>				            					            				            			            		                  		                  		                  
+		                </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                        <button type="button" class="btn btn-primary"  name="save" id="commentAddBtn">保存</button>
+                        <button class="btn-hide"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!-- fontIconPicker JS -->
+<script type="text/javascript" src="/js/fontIconPicker3.1/js/jquery.fonticonpicker.min.js"></script>

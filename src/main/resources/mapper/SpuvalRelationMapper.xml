@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jthink.shop.mapper.SpuvalRelationMapper">
+  <resultMap id="BaseResultMap" type="com.jthink.shop.entity.SpuvalRelation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="spu_id" jdbcType="INTEGER" property="spuId" />
+    <result column="spuval_id" jdbcType="INTEGER" property="spuvalId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, spu_id, spuval_id, product_id
+  </sql>
+</mapper>

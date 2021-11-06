@@ -1,0 +1,93 @@
+<link href="/css/materialdesignicons.min.css" rel="stylesheet">
+<!-- fontIconPicker core CSS -->
+<link rel="stylesheet" type="text/css" href="/js/fontIconPicker3.1/css/base/jquery.fonticonpicker.min.css" />
+<!-- required default theme -->
+<link rel="stylesheet" type="text/css" href="js/fontIconPicker3.1/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css"/>              
+                <div class="modal fade" id="addJlinkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalGridTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalGridTitle">新增链接</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+		                <form id="jlinkAddForm" class="row">
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text" id="jlinkName">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</span></div>
+				                     <input type="text" name="linkName" class="form-control">
+                                     <input type="hidden" name="id"  class="form-control">
+                                     <input type="hidden" name="termId" th:value="${term.id}" id="input-TermId">
+				              </div>
+				            </div>		
+				            <div class="form-group col-12 ">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">跳转链接</span></div>
+                                <input id="linkUrl"  type="text" name="linkUrl" class="form-control">
+				              </div>
+				            </div>	
+				            <div class="form-group col-12 " id="previewRow" style="display:none;">
+				              <div class="input-group">
+				                <img src="/images/defaultPreview.jpeg" class="previewImg" id="previewImg"/>
+				              </div>
+				            </div>					            
+					            <div class="form-group col-md-12 file-group">
+					              <div class="input-group">
+					              <div class="input-group-prepend"><span class="input-group-text">预览图片</span></div>
+					                <input type="text" class="form-control file-value" name="linkImage" value="" placeholder="预览图片地址" />
+					                <input type="file" accaccept=".png,.jpg,.jpeg,.bmp,.gif" class="d-none" />
+					                <div class="input-group-append">
+					                  <button class="btn btn-default file-browser" type="button">上传图片</button>
+					                </div>
+					              </div>
+					            </div>		            
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述</span></div>
+                                <input id="linkDescription"  type="text" name="linkDescription" class="form-control">
+				              </div>
+				            </div>					            
+				            <div class="form-group col-12 menu-perms-list-row">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序</span></div>
+                                <input id="termOrder"  type="text" name="termOrder" class="form-control">
+				              </div>
+				            </div>	
+				            <div class="form-group col-md-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">打开方式</span></div>
+			                      <select class="form-control selectpicker"   name="linkTarget" id="linkTarget">
+			                        <option value="_self">当前页</option>
+			                        <option value="_blank">新页面</option>
+			                      </select>
+				              </div>
+				            </div>				            
+				            <div class="form-group col-12">
+				              <div class="input-group">
+				                <div class="input-group-prepend"><span class="input-group-text">是否隐藏</span></div>
+				                <div class="form-controls input-group-controls p-t-5">
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                    <input type="radio" class="custom-control-input" name="linkVisible" value="y" id="linkVisible0">
+				                    <label class="custom-control-label" for="linkVisible0">隐藏</label>
+				                  </div>
+				                  <div class="custom-control custom-radio custom-control-inline">
+				                    <input type="radio" class="custom-control-input" name="linkVisible" value="n" id="linkVisible1">
+				                    <label class="custom-control-label" for="linkVisible1">可见</label>
+				                  </div>
+				                </div>
+				              </div>
+				            </div>					            				            			            		                  		                  		                  
+		                </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                        <button type="button" class="btn btn-primary"  name="save" id="jlinkAddBtn">保存</button>
+                        <button class="btn-hide"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!-- fontIconPicker JS -->
+<script type="text/javascript" src="/js/fontIconPicker3.1/js/jquery.fonticonpicker.min.js"></script>
